@@ -1,0 +1,4487 @@
+
+    <!DOCTYPE html>
+    <html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Документы и поля</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 20px;
+                background-color: #f9f9f9;
+                font-family: Arial, sans-serif;
+                position: relative;
+            }
+            .container {
+                width: 80%;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            h1 {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            h2 {
+                margin-top: 40px;
+                margin-bottom: 20px;
+                padding: 10px;
+                border: 2px solid #007BFF;
+                border-radius: 5px;
+                background-color: #f0f8ff;
+                text-align: center;
+            }
+            h3 {
+                margin-top: 10px;
+                margin-bottom: 10px;
+                font-size: 16px;
+                color: #555;
+                padding-left: 20px;
+                position: relative;
+            }
+            h3::before {
+                content: "•";
+                position: absolute;
+                left: 0;
+                color: #007BFF;
+            }
+            table {
+                width: 100%;
+                table-layout: auto;
+                background-color: white;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                margin-bottom: 40px;
+            }
+            th, td {
+                width: 50%;
+                word-wrap: break-word;
+                border: 1px solid #ddd;
+                padding: 12px;
+                text-align: left;
+            }
+            th {
+                background-color: #f2f2f2;
+            }
+            ul {
+                margin: 0;
+                padding-left: 20px;
+            }
+            .toc {
+                text-align: left;
+                margin-bottom: 40px;
+            }
+            .toc ul {
+                list-style-type: none;
+                padding: 0;
+            }
+            .toc li {
+                margin: 10px 0;
+            }
+            .toc a {
+                text-decoration: none;
+                color: #007BFF;
+                font-size: 18px;
+            }
+            .toc a:hover {
+                text-decoration: underline;
+            }
+            .toc .sub-items {
+                display: flex;
+                gap: 10px;
+                margin-top: 10px;
+                margin-left: 20px;
+            }
+            .toc .column {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+            }
+            .toc .sub-item {
+                margin: 5px 0;
+                font-size: 16px;
+                color: #555;
+                position: relative;
+            }
+            .toc .sub-item::before {
+                content: "•";
+                position: absolute;
+                left: -15px;
+                color: #007BFF;
+            }
+            .toc .sub-item a {
+                color: #555;
+                font-size: 16px;
+            }
+            .toc .sub-item a:hover {
+                color: #007BFF;
+            }
+            .back-to-top {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background-color: rgba(0, 123, 255, 0.7);
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                opacity: 0.5;
+                transition: opacity 0.3s;
+            }
+            .back-to-top:hover {
+                opacity: 1;
+            }
+            .current-mode {
+                position: fixed;
+                top: 50%;
+                right: 20px;
+                transform: translateY(-50%);
+                background-color: rgba(0, 123, 255, 0.9);
+                color: white;
+                padding: 10px 20px;
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                opacity: 1;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Документы и поля</h1>
+            <div class="toc">
+                <strong>Оглавление:</strong>
+                <ul>
+    <div class="sub-items"><div class="column"><div class="sub-item"><a href="#2-НДФЛ">2-НДФЛ</a></div><div class="sub-item"><a href="#Акт-1С">Акт 1С</a></div><div class="sub-item"><a href="#Акт-на-передачу-прав">Акт на передачу прав</a></div><div class="sub-item"><a href="#Акт-сверки">Акт сверки</a></div><div class="sub-item"><a href="#Банковский-ордер">Банковский ордер</a></div><div class="sub-item"><a href="#Бухгалтерский-баланс">Бухгалтерский баланс</a></div><div class="sub-item"><a href="#ЕГРИП">ЕГРИП</a></div><div class="sub-item"><a href="#ЕГРЮЛ">ЕГРЮЛ</a></div></div><div class="column"><div class="sub-item"><a href="#ИНН-юр.-лица">ИНН юр. лица</a></div><div class="sub-item"><a href="#Инкассовое-поручение">Инкассовое поручение</a></div><div class="sub-item"><a href="#КСФ">КСФ</a></div><div class="sub-item"><a href="#Накладная-ТОРГ-12">Накладная ТОРГ-12</a></div><div class="sub-item"><a href="#Накладная-ТОРГ-13">Накладная ТОРГ-13</a></div><div class="sub-item"><a href="#Платежное-поручение">Платежное поручение</a></div><div class="sub-item"><a href="#Платежное-требование">Платежное требование</a></div><div class="sub-item"><a href="#Платежный-ордер">Платежный ордер</a></div></div><div class="column"><div class="sub-item"><a href="#Справка-КС-3">Справка КС-3</a></div><div class="sub-item"><a href="#Справка-о-постановке-на-учет-(снятии-с-учета)-физического-лица-в-качестве-налогоплательщика-налога-на-профессиональный-доход">Справка о постановке на учет (снятии с учета) физического лица в качестве налогоплательщика налога на профессиональный доход</a></div><div class="sub-item"><a href="#Счет-1С">Счет 1С</a></div><div class="sub-item"><a href="#Счет-фактура">Счет-фактура</a></div><div class="sub-item"><a href="#ТТН">ТТН</a></div><div class="sub-item"><a href="#УКД">УКД</a></div><div class="sub-item"><a href="#УПД">УПД</a></div></div></div>
+                </ul>
+            </div>
+    
+            <h2 id="2-НДФЛ">2-НДФЛ (rus.2ndfl.type1)</h2>
+            <table>
+                <tr>
+                    <th>Названия полей</th>
+                    <th>Названия в системе</th>
+                </tr>
+        
+                <tr>
+                    <td style="#f9f9f9">За какой год</td>
+                    <td style="#f9f9f9">reference_year</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">№ справки</td>
+                    <td style="#f9f9f9">reference_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">От какой даты</td>
+                    <td style="#f9f9f9">reference_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Налоговая база для ставки 13%</td>
+                    <td style="#f9f9f9">tax_base_0</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма налога исчисленная для ставки 13%</td>
+                    <td style="#f9f9f9">tax_amount_sum_0</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Общая сумма дохода для ставки 13%</td>
+                    <td style="#f9f9f9">total_profit_0</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма фиксированных авансовых платежей для ставки 13%</td>
+                    <td style="#f9f9f9">fixed_amount_advance_payments_0</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма налога удержанная для ставки 13%</td>
+                    <td style="#f9f9f9">tax_deduction_sum_0</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма налога перечисленная для ставки 13%</td>
+                    <td style="#f9f9f9">tax_transfer_sum_0</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма налога, излишне удержанная налоговым агентом для ставки 13%</td>
+                    <td style="#f9f9f9">tax_agent_overpayment_sum_0</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма налога, не удержанная налоговым агентом для ставки 13%</td>
+                    <td style="#f9f9f9">tax_not_withheld_sum_0</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма налога на прибыль организации, подлежащая зачету, для ставки 13%</td>
+                    <td style="#f9f9f9">tax_to_be_credited_0</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма налога, исчисленная и уплаченная в иностранном государстве, для ставки 13%</td>
+                    <td style="#f9f9f9">tax_in_a_foreign_country_0</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма дохода, с которого не удержан налог налоговым агентом для ставки 13%</td>
+                    <td style="#f9f9f9">tax6_income_sum_not_0</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма неудержанного налога для ставки 13%</td>
+                    <td style="#f9f9f9">tax6_not_withheld_sum_0</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Налоговая база для ставки 15%</td>
+                    <td style="#f9f9f9">tax_base_1</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма налога исчисленная для ставки 15%</td>
+                    <td style="#f9f9f9">tax_amount_sum_1</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Общая сумма дохода для ставки 15%</td>
+                    <td style="#f9f9f9">total_profit_1</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма фиксированных авансовых платежей для ставки 15%</td>
+                    <td style="#f9f9f9">fixed_amount_advance_payments_1</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма налога удержанная для ставки 15%</td>
+                    <td style="#f9f9f9">tax_deduction_sum_1</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма налога перечисленная для ставки 15%</td>
+                    <td style="#f9f9f9">tax_transfer_sum_1</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма налога, излишне удержанная налоговым агентом для ставки 15%</td>
+                    <td style="#f9f9f9">tax_agent_overpayment_sum_1</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма налога, не удержанная налоговым агентом для ставки 15%</td>
+                    <td style="#f9f9f9">tax_not_withheld_sum_1</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма налога на прибыль организации, подлежащая зачету, для ставки 15%</td>
+                    <td style="#f9f9f9">tax_to_be_credited_1</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма налога, исчисленная и уплаченная в иностранном государстве, для ставки 15%</td>
+                    <td style="#f9f9f9">tax_in_a_foreign_country_1</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма дохода, с которого не удержан налог налоговым агентом для ставки 15%</td>
+                    <td style="#f9f9f9">tax6_income_sum_not_1</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма неудержанного налога для ставки 15%</td>
+                    <td style="#f9f9f9">tax6_not_withheld_sum_1</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Код по ОКТМО</td>
+                    <td style="#f9f9f9">tax_agent_oktmo</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Телефон</td>
+                    <td style="#f9f9f9">tax_agent_phone</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН</td>
+                    <td style="#f9f9f9">tax_agent_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">КПП</td>
+                    <td style="#f9f9f9">tax_agent_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Налоговый агент</td>
+                    <td style="#f9f9f9">tax_agent</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Форма реорганизации (ликвидации) (код)</td>
+                    <td style="#f9f9f9">tax_agent_reorganization_form_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН реорганизованной организации</td>
+                    <td style="#f9f9f9">tax_agent_reorganized_organization_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">КПП реорганизованной организации</td>
+                    <td style="#f9f9f9">tax_agent_reorganized_organization_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН в Российской Федерации</td>
+                    <td style="#f9f9f9">rf_person_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН в стране гражданства</td>
+                    <td style="#f9f9f9">ino_person_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Фамилия</td>
+                    <td style="#f9f9f9">surname</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Имя</td>
+                    <td style="#f9f9f9">name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Отчество</td>
+                    <td style="#f9f9f9">patronymic</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Статус налогоплательщика</td>
+                    <td style="#f9f9f9">taxpayer_status</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата рождения</td>
+                    <td style="#f9f9f9">birth_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Гражданство (код страны)</td>
+                    <td style="#f9f9f9">citizenship_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Код документа, удостоверяющего личность</td>
+                    <td style="#f9f9f9">document_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Серия и номер документа</td>
+                    <td style="#f9f9f9">series_and_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Ставка</td>
+                    <td style="#f9f9f9">tax_deductions_0</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Ставка</td>
+                    <td style="#f9f9f9">tax_deductions_1</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Доходы облагаемые по ставке</td>
+                    <td style="#f9f9f9">tax3_tab_0</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Доходы облагаемые по ставке</td>
+                    <td style="#f9f9f9">tax3_tab_1</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Стандартные, социальные, инвестиционные и имущественные налоговые вычеты</td>
+                    <td style="#f9f9f9">tax4_tab</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ФИО налогового агента</td>
+                    <td style="#f9f9f9">tax_agent_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Налоговый агент - подпись</td>
+                    <td style="#f9f9f9">tax_agent_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Налоговый агент - место для печати</td>
+                    <td style="#f9f9f9">tax_agent_stamping_zone</td>
+                </tr>
+            
+                    </table>
+                
+            <h2 id="Акт-1С">Акт 1С (rus.act.type1)</h2>
+            <table>
+                <tr>
+                    <th>Названия полей</th>
+                    <th>Названия в системе</th>
+                </tr>
+        
+                <tr>
+                    <td style="#f9f9f9">Номер</td>
+                    <td style="#f9f9f9">number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата</td>
+                    <td style="#f9f9f9">date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Покупатель, плательщик, заказчик</td>
+                    <td style="#f9f9f9">customer</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Имя покупателя, плательщика, заказчика (из реквизитов)</td>
+                    <td style="#f9f9f9">customer_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Адрес покупателя, плательщика, заказчика (из реквизитов)</td>
+                    <td style="#f9f9f9">customer_address</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Телефон покупателя, плательщика, заказчика (из реквизитов)</td>
+                    <td style="#f9f9f9">customer_phone</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН покупателя, плательщика, заказчика (из реквизитов)</td>
+                    <td style="#f9f9f9">customer_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">КПП покупателя, плательщика, заказчика (из реквизитов)</td>
+                    <td style="#f9f9f9">customer_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Расчетный счет покупателя, плательщика, заказчика (из реквизитов)</td>
+                    <td style="#f9f9f9">customer_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Корреспондентский счет покупателя, плательщика, заказчика (из реквизитов)</td>
+                    <td style="#f9f9f9">customer_corr_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Название банка покупателя, плательщика, заказчика (из реквизитов)</td>
+                    <td style="#f9f9f9">customer_bank_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">БИК банка покупателя, плательщика, заказчика (из реквизитов)</td>
+                    <td style="#f9f9f9">customer_bank_bik</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Поставщик, исполнитель, продавец</td>
+                    <td style="#f9f9f9">provider</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Имя поставщика, исполнителя, продавца (из реквизитов)</td>
+                    <td style="#f9f9f9">provider_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Адрес поставщика, исполнителя, продавца (из реквизитов)</td>
+                    <td style="#f9f9f9">provider_address</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Телефон поставщика, исполнителя, продавца (из реквизитов)</td>
+                    <td style="#f9f9f9">provider_phone</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН поставщика, исполнителя, продавца (из реквизитов)</td>
+                    <td style="#f9f9f9">provider_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">КПП поставщика, исполнителя, продавца (из реквизитов)</td>
+                    <td style="#f9f9f9">provider_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Расчетный счет поставщика, исполнителя, продавца (из реквизитов)</td>
+                    <td style="#f9f9f9">provider_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Корреспондентский счет поставщика, исполнителя, продавца (из реквизитов)</td>
+                    <td style="#f9f9f9">provider_corr_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Название банка поставщика, исполнителя, продавца (из реквизитов)</td>
+                    <td style="#f9f9f9">provider_bank_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">БИК банка поставщика, исполнителя, продавца (из реквизитов)</td>
+                    <td style="#f9f9f9">provider_bank_bik</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Итого к оплате</td>
+                    <td style="#f9f9f9">total</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма НДС</td>
+                    <td style="#f9f9f9">vat</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Всего с учетом НДС</td>
+                    <td style="#f9f9f9">total_to_pay</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма словами</td>
+                    <td style="#f9f9f9">amount_words</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма числом</td>
+                    <td style="#f9f9f9">amount_numbers</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Всего наименований</td>
+                    <td style="#f9f9f9">total_items</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Основание</td>
+                    <td style="#f9f9f9">basis</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Таблица товаров и услуг</td>
+                    <td style="#f9f9f9">tab</td>
+                </tr>
+            
+                    </table>
+                
+            <h2 id="Акт-на-передачу-прав">Акт на передачу прав (rus.act.rights.transfer.type1)</h2>
+            <table>
+                <tr>
+                    <th>Названия полей</th>
+                    <th>Названия в системе</th>
+                </tr>
+        
+                <tr>
+                    <td style="#f9f9f9">Лицензиар</td>
+                    <td style="#f9f9f9">provider</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Имя лицензиара (из реквизитов)</td>
+                    <td style="#f9f9f9">provider_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Адрес лицензиара (из реквизитов)</td>
+                    <td style="#f9f9f9">provider_address</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Телефон лицензиара (из реквизитов)</td>
+                    <td style="#f9f9f9">provider_phone</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН лицензиара (из реквизитов)</td>
+                    <td style="#f9f9f9">provider_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">КПП лицензиара (из реквизитов)</td>
+                    <td style="#f9f9f9">provider_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Банковский счёт лицензиара (из реквизитов)</td>
+                    <td style="#f9f9f9">provider_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Название банка лицензиара (из реквизитов)</td>
+                    <td style="#f9f9f9">provider_bank_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">БИК банка лицензиара (из реквизитов)</td>
+                    <td style="#f9f9f9">provider_bank_bik</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Корреспондентский счёт банка лицензиара (из реквизитов)</td>
+                    <td style="#f9f9f9">provider_corr_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Лицензиат</td>
+                    <td style="#f9f9f9">customer</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Имя лицензиата (из реквизитов)</td>
+                    <td style="#f9f9f9">customer_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Адрес лицензиата (из реквизитов)</td>
+                    <td style="#f9f9f9">customer_address</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Телефон лицензиата (из реквизитов)</td>
+                    <td style="#f9f9f9">customer_phone</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН лицензиата (из реквизитов)</td>
+                    <td style="#f9f9f9">customer_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">КПП лицензиата (из реквизитов)</td>
+                    <td style="#f9f9f9">customer_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Банковский счёт лицензиата (из реквизитов)</td>
+                    <td style="#f9f9f9">customer_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Название банка лицензиата (из реквизитов)</td>
+                    <td style="#f9f9f9">customer_bank_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">БИК банка лицензиата (из реквизитов)</td>
+                    <td style="#f9f9f9">customer_bank_bik</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Корреспондентский счёт банка лицензиата (из реквизитов)</td>
+                    <td style="#f9f9f9">customer_corr_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Плательщик</td>
+                    <td style="#f9f9f9">payer</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Имя плательщика (из реквизитов)</td>
+                    <td style="#f9f9f9">payer_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Адрес плательщика (из реквизитов)</td>
+                    <td style="#f9f9f9">payer_address</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Телефон плательщика (из реквизитов)</td>
+                    <td style="#f9f9f9">payer_phone</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН плательщика (из реквизитов)</td>
+                    <td style="#f9f9f9">payer_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">КПП плательщика (из реквизитов)</td>
+                    <td style="#f9f9f9">payer_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Банковский счёт плательщика (из реквизитов)</td>
+                    <td style="#f9f9f9">payer_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Название банка плательщика (из реквизитов)</td>
+                    <td style="#f9f9f9">payer_bank_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">БИК банка плательщика (из реквизитов)</td>
+                    <td style="#f9f9f9">payer_bank_bik</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Корреспондентский счёт банка плательщика (из реквизитов)</td>
+                    <td style="#f9f9f9">payer_corr_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Основание</td>
+                    <td style="#f9f9f9">basis</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер документа</td>
+                    <td style="#f9f9f9">number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата составления</td>
+                    <td style="#f9f9f9">date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Таблица</td>
+                    <td style="#f9f9f9">tab</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Количество листов приложения к акту на передачу прав</td>
+                    <td style="#f9f9f9">sheets_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Количество порядковых номеров записей</td>
+                    <td style="#f9f9f9">sequential_records_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Количество листов в приложении</td>
+                    <td style="#f9f9f9">attachment_sheets_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Всего отпущено на сумму</td>
+                    <td style="#f9f9f9">amount_words</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Должность лицензиара</td>
+                    <td style="#f9f9f9">provider_signatory_position</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Расшифровка подписи лицензиара</td>
+                    <td style="#f9f9f9">provider_signatory_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата подписания акта лицензиаром</td>
+                    <td style="#f9f9f9">provider_signatory_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Доверенность - номер</td>
+                    <td style="#f9f9f9">proxy_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Доверенность - дата</td>
+                    <td style="#f9f9f9">proxy_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Доверенность - кем выдана</td>
+                    <td style="#f9f9f9">proxy_authority</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Должность лицензиата</td>
+                    <td style="#f9f9f9">customer_signatory_position</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Расшифровка подписи лицензиата</td>
+                    <td style="#f9f9f9">customer_signatory_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата подписания акта лицензиатом</td>
+                    <td style="#f9f9f9">customer_signatory_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Подпись лицензиата</td>
+                    <td style="#f9f9f9">customer_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Подпись лицензиара</td>
+                    <td style="#f9f9f9">provider_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Печать лицензиата</td>
+                    <td style="#f9f9f9">customer_stamp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Печать лицензиара</td>
+                    <td style="#f9f9f9">provider_stamp</td>
+                </tr>
+            
+                    </table>
+                
+            <h2 id="Акт-сверки">Акт сверки (rus.act.reconciliation.type1)</h2>
+            <table>
+                <tr>
+                    <th>Названия полей</th>
+                    <th>Названия в системе</th>
+                </tr>
+        
+                <tr>
+                    <td style="#f9f9f9">Договор</td>
+                    <td style="#f9f9f9">contract</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сторона 1</td>
+                    <td style="#f9f9f9">party1</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сторона 2</td>
+                    <td style="#f9f9f9">party2</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Подписавшийся от стороны 1</td>
+                    <td style="#f9f9f9">signatory1</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Подписавшийся от стороны 2</td>
+                    <td style="#f9f9f9">signatory2</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">За период с ... по ...</td>
+                    <td style="#f9f9f9">period</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер</td>
+                    <td style="#f9f9f9">number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата</td>
+                    <td style="#f9f9f9">date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата по состоянию на</td>
+                    <td style="#f9f9f9">status_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сторона 1 - Задолженность</td>
+                    <td style="#f9f9f9">party1_debt</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сторона 1 - Должность</td>
+                    <td style="#f9f9f9">party1_position</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сторона 1 - Подпись</td>
+                    <td style="#f9f9f9">party1_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сторона 1 - Расшифровка подписи</td>
+                    <td style="#f9f9f9">party1_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Печать стороны 1</td>
+                    <td style="#f9f9f9">party1_stamping_zone</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сторона 2 - Задолженность</td>
+                    <td style="#f9f9f9">party2_debt</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сторона 2 - Должность</td>
+                    <td style="#f9f9f9">party2_position</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сторона 2 - Расшифровка подписи</td>
+                    <td style="#f9f9f9">party2_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сторона 2 - Подпись</td>
+                    <td style="#f9f9f9">party2_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Печать стороны 2</td>
+                    <td style="#f9f9f9">party2_stamping_zone</td>
+                </tr>
+            
+                    </table>
+                
+            <h2 id="Банковский-ордер">Банковский ордер (rus.bank_warrant.type1)</h2>
+            <table>
+                <tr>
+                    <th>Названия полей</th>
+                    <th>Названия в системе</th>
+                </tr>
+        
+                <tr>
+                    <td style="#f9f9f9">ОКУД</td>
+                    <td style="#f9f9f9">okud_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата</td>
+                    <td style="#f9f9f9">date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер</td>
+                    <td style="#f9f9f9">number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма прописью</td>
+                    <td style="#f9f9f9">amount_words</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Плательщик</td>
+                    <td style="#f9f9f9">payer</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма</td>
+                    <td style="#f9f9f9">amount_numbers</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер счёта плательщика</td>
+                    <td style="#f9f9f9">payer_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Получатель</td>
+                    <td style="#f9f9f9">beneficiary</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер счета получателя</td>
+                    <td style="#f9f9f9">beneficiary_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Вид операции</td>
+                    <td style="#f9f9f9">operation_type</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Очередь платежа</td>
+                    <td style="#f9f9f9">payment_priority</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Назначение платежа</td>
+                    <td style="#f9f9f9">payment_purpose</td>
+                </tr>
+            
+                    </table>
+                
+            <h2 id="Бухгалтерский-баланс">Бухгалтерский баланс (rus.balance_sheet.type1)</h2>
+            <table>
+                <tr>
+                    <th>Названия полей</th>
+                    <th>Названия в системе</th>
+                </tr>
+        
+                <tr>
+                    <td style="#f9f9f9">Бухгалтерская отчетность подлежит обязательному аудиту</td>
+                    <td style="#f9f9f9">subject_to_mandatory_audit_yes</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Бухгалтерская отчетность не подлежит обязательному аудиту</td>
+                    <td style="#f9f9f9">subject_to_mandatory_audit_no</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ОКУД</td>
+                    <td style="#f9f9f9">okud_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата (день)</td>
+                    <td style="#f9f9f9">day_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата (месяц)</td>
+                    <td style="#f9f9f9">month_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата (год)</td>
+                    <td style="#f9f9f9">year_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ОКПО</td>
+                    <td style="#f9f9f9">okpo_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН</td>
+                    <td style="#f9f9f9">inn_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ОКВЭД</td>
+                    <td style="#f9f9f9">okved_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ОКФС</td>
+                    <td style="#f9f9f9">okfs_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ОКОПФ</td>
+                    <td style="#f9f9f9">okopf_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ОКЕИ</td>
+                    <td style="#f9f9f9">okei_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Таблица</td>
+                    <td style="#f9f9f9">tab</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Бухгалтерский баланс на</td>
+                    <td style="#f9f9f9">reference_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Организация</td>
+                    <td style="#f9f9f9">organization</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Вид экономической деятельности</td>
+                    <td style="#f9f9f9">activity</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Огранизационно-правовая форма</td>
+                    <td style="#f9f9f9">legal_form</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Форма собственности</td>
+                    <td style="#f9f9f9">ownership_type</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Единица измерения</td>
+                    <td style="#f9f9f9">monetary_unit</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Местонахождения (адрес)</td>
+                    <td style="#f9f9f9">address</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата подписания</td>
+                    <td style="#f9f9f9">signature_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ФИО главного бухгалтера</td>
+                    <td style="#f9f9f9">chief_accountant</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ФИО руководителя организации</td>
+                    <td style="#f9f9f9">director_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Печать организации</td>
+                    <td style="#f9f9f9">stamp_0</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Наименование аудиторской организации/фамилия, имя, отчество (при наличии) индивидуального аудитора</td>
+                    <td style="#f9f9f9">auditor</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Идентификационный номер налогоплательщика аудиторской организации/ индивидуального аудитора</td>
+                    <td style="#f9f9f9">auditor_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Основной государственный регистрационный номер аудиторской организации/ индивидуального аудитора</td>
+                    <td style="#f9f9f9">auditor_ogrn_ogrnip</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Руководитель организации - подпись - проверка наличия</td>
+                    <td style="#f9f9f9">director_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Главный бухгалтер - подпись - проверка наличия</td>
+                    <td style="#f9f9f9">chief_accountant_signature</td>
+                </tr>
+            
+                    </table>
+                
+            <h2 id="ЕГРИП">ЕГРИП (rus.egrip.type1)</h2>
+            <table>
+                <tr>
+                    <th>Названия полей</th>
+                    <th>Названия в системе</th>
+                </tr>
+        
+                <tr>
+                    <td style="#f9f9f9">Дата формирования выписки</td>
+                    <td style="#f9f9f9">formation_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер выписки</td>
+                    <td style="#f9f9f9">number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Фамилия, имя и отчество (при наличии) индивидуального предпринимателя</td>
+                    <td style="#f9f9f9">surname_name_patronymic</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ОГРНИП</td>
+                    <td style="#f9f9f9">ogrnip_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата статуса</td>
+                    <td style="#f9f9f9">status_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Табличная часть, содержащая сведения о индивидуальном предпринимателе</td>
+                    <td style="#f9f9f9">tab</td>
+                </tr>
+            
+                    </table>
+                
+            <h2 id="ЕГРЮЛ">ЕГРЮЛ (rus.egrul.type1)</h2>
+            <table>
+                <tr>
+                    <th>Названия полей</th>
+                    <th>Названия в системе</th>
+                </tr>
+        
+                <tr>
+                    <td style="#f9f9f9">Дата формирования выписки</td>
+                    <td style="#f9f9f9">formation_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ОГРН</td>
+                    <td style="#f9f9f9">ogrn_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер выписки</td>
+                    <td style="#f9f9f9">number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Полное наименование юридического лица</td>
+                    <td style="#f9f9f9">legal_entity</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата статуса</td>
+                    <td style="#f9f9f9">status_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН/КПП</td>
+                    <td style="#f9f9f9">inn_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Табличная часть, содержащая сведения о юридическом лице</td>
+                    <td style="#f9f9f9">tab</td>
+                </tr>
+            
+                    </table>
+                
+            <h2 id="ИНН-юр.-лица">ИНН юр. лица (rus.tin.entity.type1)</h2>
+            <table>
+                <tr>
+                    <th>Названия полей</th>
+                    <th>Названия в системе</th>
+                </tr>
+        
+                <tr>
+                    <td style="#f9f9f9">Название юридического лица</td>
+                    <td style="#f9f9f9">entity_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Основной государственный регистрационный номер</td>
+                    <td style="#f9f9f9">ogrn_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата постановки на учет</td>
+                    <td style="#f9f9f9">date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Название инспекционного органа</td>
+                    <td style="#f9f9f9">inspection_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер инспекционного органа</td>
+                    <td style="#f9f9f9">inspection_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер ИНН</td>
+                    <td style="#f9f9f9">tin_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер КПП</td>
+                    <td style="#f9f9f9">kpp_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер документа</td>
+                    <td style="#f9f9f9">number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Серия документа</td>
+                    <td style="#f9f9f9">series</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата формирования выписки из ЕГРЮЛ</td>
+                    <td style="#f9f9f9">egrul_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Серия выписки из ЕГРЮЛ</td>
+                    <td style="#f9f9f9">egrul_series</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер выписки из ЕГРЮЛ</td>
+                    <td style="#f9f9f9">egrul_number</td>
+                </tr>
+            
+                    </table>
+                
+            <h2 id="Инкассовое-поручение">Инкассовое поручение (rus.collection_order.type1)</h2>
+            <table>
+                <tr>
+                    <th>Названия полей</th>
+                    <th>Названия в системе</th>
+                </tr>
+        
+                <tr>
+                    <td style="#f9f9f9">Поступление в банк платежа</td>
+                    <td style="#f9f9f9">receipt_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Списано со счета платежа</td>
+                    <td style="#f9f9f9">debiting_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ОКУД</td>
+                    <td style="#f9f9f9">okud_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер</td>
+                    <td style="#f9f9f9">number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата</td>
+                    <td style="#f9f9f9">date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Вид платежа</td>
+                    <td style="#f9f9f9">payment_type</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Статус плательщика</td>
+                    <td style="#f9f9f9">payer_status</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма прописью</td>
+                    <td style="#f9f9f9">amount_words</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН плательщика</td>
+                    <td style="#f9f9f9">payer_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">КПП плательщика</td>
+                    <td style="#f9f9f9">payer_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Плательщик</td>
+                    <td style="#f9f9f9">payer</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма</td>
+                    <td style="#f9f9f9">amount_numbers</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер счёта плательщика</td>
+                    <td style="#f9f9f9">payer_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Банк плательщика</td>
+                    <td style="#f9f9f9">payer_bank</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">БИК плательщика</td>
+                    <td style="#f9f9f9">payer_bik</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер корреспондентского счета плательщика</td>
+                    <td style="#f9f9f9">payer_bank_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Банк получателя</td>
+                    <td style="#f9f9f9">beneficiary_bank</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">БИК получателя</td>
+                    <td style="#f9f9f9">beneficiary_bik</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер корреспондентского счета получателя</td>
+                    <td style="#f9f9f9">beneficiary_bank_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН получателя</td>
+                    <td style="#f9f9f9">beneficiary_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">КПП получателя</td>
+                    <td style="#f9f9f9">beneficiary_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Получатель</td>
+                    <td style="#f9f9f9">beneficiary</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер счета получателя</td>
+                    <td style="#f9f9f9">beneficiary_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Вид операции</td>
+                    <td style="#f9f9f9">operation_type</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Код назначения платежа</td>
+                    <td style="#f9f9f9">payment_purpose_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Код - Уникальный идентификатор начислений</td>
+                    <td style="#f9f9f9">uin_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Очередь платежа</td>
+                    <td style="#f9f9f9">payment_priority</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Резервное поле</td>
+                    <td style="#f9f9f9">reserve_field</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Код бюджетной классификации</td>
+                    <td style="#f9f9f9">budget_classification_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ОКТМО</td>
+                    <td style="#f9f9f9">oktmo_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Код основания платежа</td>
+                    <td style="#f9f9f9">payment_basis_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Код налогового периода</td>
+                    <td style="#f9f9f9">tax_period_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер документа, который является основанием платежа</td>
+                    <td style="#f9f9f9">document_payment_basis_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата документа, который является основанием платежа</td>
+                    <td style="#f9f9f9">document_payment_basis_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Тип платежа — код выплаты</td>
+                    <td style="#f9f9f9">payment_type_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Назначение платежа</td>
+                    <td style="#f9f9f9">payment_purpose</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Печать</td>
+                    <td style="#f9f9f9">stamping_zone</td>
+                </tr>
+            
+                    </table>
+                
+            <h2 id="КСФ">КСФ (rus.invoice.tax.corr.type1)</h2>
+            <table>
+                <tr>
+                    <th>Названия полей</th>
+                    <th>Названия в системе</th>
+                </tr>
+        
+                <tr>
+                    <td style="#f9f9f9">Номер корректировочного счета-фактуры</td>
+                    <td style="#f9f9f9">invoice_tax_corr_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата корректировочного счета-фактуры</td>
+                    <td style="#f9f9f9">invoice_tax_corr_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер исправления корректировочного счета-фактуры</td>
+                    <td style="#f9f9f9">amend_invoice_tax_corr_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата исправления корректировочного счета-фактуры</td>
+                    <td style="#f9f9f9">amend_invoice_tax_corr_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер счета-фактуры</td>
+                    <td style="#f9f9f9">invoice_tax_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата счета-фактуры</td>
+                    <td style="#f9f9f9">invoice_tax_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер исправления счета-фактуры</td>
+                    <td style="#f9f9f9">amend_invoice_tax_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата исправления счета-фактуры</td>
+                    <td style="#f9f9f9">amend_invoice_tax_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Продавец</td>
+                    <td style="#f9f9f9">seller</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Адрес продавца</td>
+                    <td style="#f9f9f9">seller_address</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН и КПП продавца</td>
+                    <td style="#f9f9f9">seller_inn_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Грузоотправитель и его адрес</td>
+                    <td style="#f9f9f9">shipper</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Имя грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Адрес грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_address</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Телефон грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_phone</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">КПП грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Банковский счёт грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Название банка грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_bank_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">БИК банка грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_bank_bik</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Корреспондентский счёт банка грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_corr_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Грузополучатель и его адрес</td>
+                    <td style="#f9f9f9">consignee</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Имя грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Адрес грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_address</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Телефон грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_phone</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">КПП грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Банковский счёт грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Название банка грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_bank_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">БИК банка грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_bank_bik</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Корреспондентский счёт банка грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_corr_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">К платежно-расчетному документу №</td>
+                    <td style="#f9f9f9">payment_doc</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Покупатель</td>
+                    <td style="#f9f9f9">buyer</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Адрес покупателя</td>
+                    <td style="#f9f9f9">buyer_address</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН и КПП покупателя</td>
+                    <td style="#f9f9f9">buyer_inn_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Валюта: наименование, код</td>
+                    <td style="#f9f9f9">currency</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Идентификатор государственного контракта, договора (соглашения)</td>
+                    <td style="#f9f9f9">contract_id</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Руководитель организации или иное уполномоченное лицо - ФИО</td>
+                    <td style="#f9f9f9">director</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Руководитель организации - подпись</td>
+                    <td style="#f9f9f9">director_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Главный бухгалтер или иное уполномоченное лицо - ФИО</td>
+                    <td style="#f9f9f9">accountant</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Главный бухгалтер - подпись</td>
+                    <td style="#f9f9f9">accountant_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Индивидуальный предприниматель или иное уполномоченное лицо - ФИО</td>
+                    <td style="#f9f9f9">individual_entrepreneur</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Индивидуальный предприниматель - подпись</td>
+                    <td style="#f9f9f9">individual_entrepreneur_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Реквизиты свидетельства о государственной регистрации индивидуального предпринимателя</td>
+                    <td style="#f9f9f9">state_registration</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Таблица - сведения о товарах (работах, услугах)</td>
+                    <td style="#f9f9f9">tab</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Печать</td>
+                    <td style="#f9f9f9">stamping_zone</td>
+                </tr>
+            
+                    </table>
+                
+            <h2 id="Накладная-ТОРГ-12">Накладная ТОРГ-12 (rus.torg12.type1)</h2>
+            <table>
+                <tr>
+                    <th>Названия полей</th>
+                    <th>Названия в системе</th>
+                </tr>
+        
+                <tr>
+                    <td style="#f9f9f9">ОКУД</td>
+                    <td style="#f9f9f9">okud_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ОКПО грузоотправителя</td>
+                    <td style="#f9f9f9">okpo_shipper</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ОКДП грузоотправителя, вид деятельности</td>
+                    <td style="#f9f9f9">okdp_activity_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ОКПО грузополучателя</td>
+                    <td style="#f9f9f9">okpo_consignee</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ОКПО поставщика</td>
+                    <td style="#f9f9f9">okpo_provider</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ОКПО плательщика</td>
+                    <td style="#f9f9f9">okpo_payer</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер основания (договор или заказ-наряда)</td>
+                    <td style="#f9f9f9">basis_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата основания (договор или заказ-наряда)</td>
+                    <td style="#f9f9f9">basis_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер транспортной накладной</td>
+                    <td style="#f9f9f9">waybill_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата транспортной накладной</td>
+                    <td style="#f9f9f9">waybill_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Вид операции</td>
+                    <td style="#f9f9f9">operation_type</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата составления</td>
+                    <td style="#f9f9f9">date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер документа</td>
+                    <td style="#f9f9f9">number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Грузоотправитель: организация, адрес, телефон, факс, банковские реквизиты, структурное подразделение</td>
+                    <td style="#f9f9f9">shipper</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Грузополучатель</td>
+                    <td style="#f9f9f9">consignee</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Адрес доставки</td>
+                    <td style="#f9f9f9">delivery_address</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Поставщик</td>
+                    <td style="#f9f9f9">provider</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Плательщик</td>
+                    <td style="#f9f9f9">payer</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Основание</td>
+                    <td style="#f9f9f9">basis</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Таблица с товарами</td>
+                    <td style="#f9f9f9">tab</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Количество листов приложения к товарной накладной</td>
+                    <td style="#f9f9f9">sheets_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Количество порядковых номеров записей</td>
+                    <td style="#f9f9f9">sequential_records_numbers</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Масса груза (нетто)</td>
+                    <td style="#f9f9f9">cargo_weight_net</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Масса груза (брутто)</td>
+                    <td style="#f9f9f9">cargo_weight_gross</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Всего мест</td>
+                    <td style="#f9f9f9">total_seats</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Количество листов в приложении</td>
+                    <td style="#f9f9f9">attachment_sheets_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Всего отпущено на сумму</td>
+                    <td style="#f9f9f9">total_released_amount</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Отпуск груза разрешил - должность</td>
+                    <td style="#f9f9f9">cargo_release_authorized_position</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Отпуск груза разрешил - подпись</td>
+                    <td style="#f9f9f9">cargo_release_authorized_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Отпуск груза разрешил - ФИО</td>
+                    <td style="#f9f9f9">cargo_release_authorized_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Главный (старший) бухгалтер - подпись</td>
+                    <td style="#f9f9f9">accountant_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Главный (старший) бухгалтер - ФИО</td>
+                    <td style="#f9f9f9">accountant</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Отпуск груза произвел - должность</td>
+                    <td style="#f9f9f9">cargo_release_produced_position</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Отпуск груза произвел - подпись</td>
+                    <td style="#f9f9f9">cargo_release_produced_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Отпуск груза произвел - ФИО</td>
+                    <td style="#f9f9f9">cargo_release_produced_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата отпуска груза</td>
+                    <td style="#f9f9f9">shipment_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Доверенность - номер</td>
+                    <td style="#f9f9f9">proxy_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Доверенность - дата</td>
+                    <td style="#f9f9f9">proxy_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Доверенность - кем выдана</td>
+                    <td style="#f9f9f9">proxy_authority</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Груз принял - должность</td>
+                    <td style="#f9f9f9">cargo_accepted_position</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Груз принял - подпись</td>
+                    <td style="#f9f9f9">cargo_accepted_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Груз принял - расшифровка подписи</td>
+                    <td style="#f9f9f9">cargo_accepted_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Груз получил грузополучатель - должность</td>
+                    <td style="#f9f9f9">cargo_received_position</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Груз получил грузополучатель - подпись</td>
+                    <td style="#f9f9f9">cargo_received_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Груз получил грузополучатель - расшифровка подписи</td>
+                    <td style="#f9f9f9">cargo_received_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата приемки груза</td>
+                    <td style="#f9f9f9">acceptance_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Имя плательщика (из реквизитов)</td>
+                    <td style="#f9f9f9">payer_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Адрес плательщика (из реквизитов)</td>
+                    <td style="#f9f9f9">payer_address</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Телефон плательщика (из реквизитов)</td>
+                    <td style="#f9f9f9">payer_phone</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН плательщика (из реквизитов)</td>
+                    <td style="#f9f9f9">payer_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">КПП плательщика (из реквизитов)</td>
+                    <td style="#f9f9f9">payer_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Банковский счёт плательщика (из реквизитов)</td>
+                    <td style="#f9f9f9">payer_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Название банка плательщика (из реквизитов)</td>
+                    <td style="#f9f9f9">payer_bank_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">БИК банка плательщика (из реквизитов)</td>
+                    <td style="#f9f9f9">payer_bank_bik</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Корреспондентский счёт банка плательщика (из реквизитов)</td>
+                    <td style="#f9f9f9">payer_corr_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Имя грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Адрес грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_address</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Телефон грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_phone</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">КПП грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Банковский счёт грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Название банка грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_bank_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">БИК банка грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_bank_bik</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Корреспондентский счёт банка грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_corr_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Имя грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Адрес грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_address</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Телефон грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_phone</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">КПП грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Банковский счёт грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Название банка грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_bank_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">БИК банка грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_bank_bik</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Корреспондентский счёт банка грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_corr_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Имя поставщика (из реквизитов)</td>
+                    <td style="#f9f9f9">provider_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Адрес поставщика (из реквизитов)</td>
+                    <td style="#f9f9f9">provider_address</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Телефон поставщика (из реквизитов)</td>
+                    <td style="#f9f9f9">provider_phone</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН поставщика (из реквизитов)</td>
+                    <td style="#f9f9f9">provider_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">КПП поставщика (из реквизитов)</td>
+                    <td style="#f9f9f9">provider_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Банковский счёт поставщика (из реквизитов)</td>
+                    <td style="#f9f9f9">provider_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Название банка поставщика (из реквизитов)</td>
+                    <td style="#f9f9f9">provider_bank_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">БИК банка поставщика (из реквизитов)</td>
+                    <td style="#f9f9f9">provider_bank_bik</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Корреспондентский счёт банка поставщика (из реквизитов)</td>
+                    <td style="#f9f9f9">provider_corr_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Грузоотправитель - место для печати</td>
+                    <td style="#f9f9f9">shipper_stamping_zone</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Грузополучатель - место для печати</td>
+                    <td style="#f9f9f9">consignee_stamping_zone</td>
+                </tr>
+            
+                    </table>
+                
+            <h2 id="Накладная-ТОРГ-13">Накладная ТОРГ-13 (rus.torg13.type1)</h2>
+            <table>
+                <tr>
+                    <th>Названия полей</th>
+                    <th>Названия в системе</th>
+                </tr>
+        
+                <tr>
+                    <td style="#f9f9f9">ОКУД</td>
+                    <td style="#f9f9f9">okud_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ОКПО организации</td>
+                    <td style="#f9f9f9">okpo_organization</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ОКДП грузоотправителя, вид деятельности</td>
+                    <td style="#f9f9f9">okdp_activity_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Вид операции</td>
+                    <td style="#f9f9f9">operation_type</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата составления</td>
+                    <td style="#f9f9f9">date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер документа</td>
+                    <td style="#f9f9f9">number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Оганизация: адрес, телефон, факс, банковские реквизиты</td>
+                    <td style="#f9f9f9">organization</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Таблица 1</td>
+                    <td style="#f9f9f9">tab1</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Таблица 2</td>
+                    <td style="#f9f9f9">tab2</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Всего отпущено на сумму</td>
+                    <td style="#f9f9f9">total_released_amount</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Отпуск груза произвел - должность</td>
+                    <td style="#f9f9f9">cargo_release_produced_position</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Отпуск груза произвел - подпись</td>
+                    <td style="#f9f9f9">cargo_release_produced_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Отпуск груза произвел - ФИО</td>
+                    <td style="#f9f9f9">cargo_release_produced_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Груз получил грузополучатель - должность</td>
+                    <td style="#f9f9f9">cargo_received_position</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Груз получил грузополучатель - подпись</td>
+                    <td style="#f9f9f9">cargo_received_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Груз получил грузополучатель - расшифровка подписи</td>
+                    <td style="#f9f9f9">cargo_received_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Имя организации (из реквизитов)</td>
+                    <td style="#f9f9f9">organization_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Адрес организации (из реквизитов)</td>
+                    <td style="#f9f9f9">organization_address</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Телефон организации (из реквизитов)</td>
+                    <td style="#f9f9f9">organization_phone</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН организации (из реквизитов)</td>
+                    <td style="#f9f9f9">organization_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">КПП организации (из реквизитов)</td>
+                    <td style="#f9f9f9">organization_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Банковский счёт организации (из реквизитов)</td>
+                    <td style="#f9f9f9">organization_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Название банка организации (из реквизитов)</td>
+                    <td style="#f9f9f9">organization_bank_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">БИК банка организации (из реквизитов)</td>
+                    <td style="#f9f9f9">organization_bank_bik</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Корреспондентский счёт банка организации (из реквизитов)</td>
+                    <td style="#f9f9f9">organization_corr_account</td>
+                </tr>
+            
+                    </table>
+                
+            <h2 id="Платежное-поручение">Платежное поручение (rus.payment_order.type1)</h2>
+            <table>
+                <tr>
+                    <th>Названия полей</th>
+                    <th>Названия в системе</th>
+                </tr>
+        
+                <tr>
+                    <td style="#f9f9f9">Поступление в банк платежа</td>
+                    <td style="#f9f9f9">receipt_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Списано со счета платежа</td>
+                    <td style="#f9f9f9">debiting_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ОКУД</td>
+                    <td style="#f9f9f9">okud_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер</td>
+                    <td style="#f9f9f9">number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата</td>
+                    <td style="#f9f9f9">date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Вид платежа</td>
+                    <td style="#f9f9f9">payment_type</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Статус плательщика</td>
+                    <td style="#f9f9f9">payer_status</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма прописью</td>
+                    <td style="#f9f9f9">amount_words</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН плательщика</td>
+                    <td style="#f9f9f9">payer_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">КПП плательщика</td>
+                    <td style="#f9f9f9">payer_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Плательщик</td>
+                    <td style="#f9f9f9">payer</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма</td>
+                    <td style="#f9f9f9">amount_numbers</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер счёта плательщика</td>
+                    <td style="#f9f9f9">payer_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Банк плательщика</td>
+                    <td style="#f9f9f9">payer_bank</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">БИК плательщика</td>
+                    <td style="#f9f9f9">payer_bik</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер корреспондентского счета плательщика</td>
+                    <td style="#f9f9f9">payer_bank_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Банк получателя</td>
+                    <td style="#f9f9f9">beneficiary_bank</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">БИК получателя</td>
+                    <td style="#f9f9f9">beneficiary_bik</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер корреспондентского счета получателя</td>
+                    <td style="#f9f9f9">beneficiary_bank_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН получателя</td>
+                    <td style="#f9f9f9">beneficiary_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">КПП получателя</td>
+                    <td style="#f9f9f9">beneficiary_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Получатель</td>
+                    <td style="#f9f9f9">beneficiary</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер счета получателя</td>
+                    <td style="#f9f9f9">beneficiary_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Вид операции</td>
+                    <td style="#f9f9f9">operation_type</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Код назначения платежа</td>
+                    <td style="#f9f9f9">payment_purpose_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Код - Уникальный идентификатор начислений</td>
+                    <td style="#f9f9f9">uin_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Срок платежа</td>
+                    <td style="#f9f9f9">payment_term</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Очередь платежа</td>
+                    <td style="#f9f9f9">payment_priority</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Резервное поле</td>
+                    <td style="#f9f9f9">reserve_field</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Код бюджетной классификации</td>
+                    <td style="#f9f9f9">budget_classification_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ОКТМО</td>
+                    <td style="#f9f9f9">oktmo_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Код основания платежа</td>
+                    <td style="#f9f9f9">payment_basis_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Код налогового периода</td>
+                    <td style="#f9f9f9">tax_period_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер документа, который является основанием платежа</td>
+                    <td style="#f9f9f9">document_payment_basis_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата документа, который является основанием платежа</td>
+                    <td style="#f9f9f9">document_payment_basis_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Тип платежа — код выплаты</td>
+                    <td style="#f9f9f9">payment_type_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Назначение платежа</td>
+                    <td style="#f9f9f9">payment_purpose</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Печать</td>
+                    <td style="#f9f9f9">stamping_zone</td>
+                </tr>
+            
+                    </table>
+                
+            <h2 id="Платежное-требование">Платежное требование (rus.payment_request.type1)</h2>
+            <table>
+                <tr>
+                    <th>Названия полей</th>
+                    <th>Названия в системе</th>
+                </tr>
+        
+                <tr>
+                    <td style="#f9f9f9">Поступление в банк платежа</td>
+                    <td style="#f9f9f9">receipt_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Окончание срока акцепта</td>
+                    <td style="#f9f9f9">acceptance_expiry_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Списано со счета платежа</td>
+                    <td style="#f9f9f9">debiting_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ОКУД</td>
+                    <td style="#f9f9f9">okud_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер</td>
+                    <td style="#f9f9f9">number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата</td>
+                    <td style="#f9f9f9">date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Вид платежа</td>
+                    <td style="#f9f9f9">payment_type</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Условие оплаты</td>
+                    <td style="#f9f9f9">payment_condition</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Срок для акцепта</td>
+                    <td style="#f9f9f9">acceptance_period</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма прописью</td>
+                    <td style="#f9f9f9">amount_words</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН плательщика</td>
+                    <td style="#f9f9f9">payer_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Плательщик</td>
+                    <td style="#f9f9f9">payer</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма</td>
+                    <td style="#f9f9f9">amount_numbers</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер счёта плательщика</td>
+                    <td style="#f9f9f9">payer_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Банк плательщика</td>
+                    <td style="#f9f9f9">payer_bank</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">БИК плательщика</td>
+                    <td style="#f9f9f9">payer_bik</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер корреспондентского счета плательщика</td>
+                    <td style="#f9f9f9">payer_bank_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Банк получателя</td>
+                    <td style="#f9f9f9">beneficiary_bank</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">БИК получателя</td>
+                    <td style="#f9f9f9">beneficiary_bik</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер корреспондентского счета получателя</td>
+                    <td style="#f9f9f9">beneficiary_bank_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН получателя</td>
+                    <td style="#f9f9f9">beneficiary_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Получатель</td>
+                    <td style="#f9f9f9">beneficiary</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер счета получателя</td>
+                    <td style="#f9f9f9">beneficiary_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Вид операции</td>
+                    <td style="#f9f9f9">operation_type</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Код назначения платежа</td>
+                    <td style="#f9f9f9">payment_purpose_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Код - Уникальный идентификатор начислений</td>
+                    <td style="#f9f9f9">uin_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Очередь платежа</td>
+                    <td style="#f9f9f9">payment_priority</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Резервное поле</td>
+                    <td style="#f9f9f9">reserve_field</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Назначение платежа</td>
+                    <td style="#f9f9f9">payment_purpose</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата отсылки (вручения) плательщику предусмотренных договором документов</td>
+                    <td style="#f9f9f9">sending_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Печать</td>
+                    <td style="#f9f9f9">stamping_zone</td>
+                </tr>
+            
+                    </table>
+                
+            <h2 id="Платежный-ордер">Платежный ордер (rus.payment_warrant.type1)</h2>
+            <table>
+                <tr>
+                    <th>Названия полей</th>
+                    <th>Названия в системе</th>
+                </tr>
+        
+                <tr>
+                    <td style="#f9f9f9">ОКУД</td>
+                    <td style="#f9f9f9">okud_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер</td>
+                    <td style="#f9f9f9">number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата</td>
+                    <td style="#f9f9f9">date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Вид платежа</td>
+                    <td style="#f9f9f9">payment_type</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма прописью</td>
+                    <td style="#f9f9f9">amount_words</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН плательщика</td>
+                    <td style="#f9f9f9">payer_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">КПП плательщика</td>
+                    <td style="#f9f9f9">payer_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Плательщик</td>
+                    <td style="#f9f9f9">payer</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма</td>
+                    <td style="#f9f9f9">amount_numbers</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер счёта плательщика</td>
+                    <td style="#f9f9f9">payer_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Банк плательщика</td>
+                    <td style="#f9f9f9">payer_bank</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">БИК плательщика</td>
+                    <td style="#f9f9f9">payer_bik</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер корреспондентского счета плательщика</td>
+                    <td style="#f9f9f9">payer_bank_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Банк получателя</td>
+                    <td style="#f9f9f9">beneficiary_bank</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">БИК получателя</td>
+                    <td style="#f9f9f9">beneficiary_bik</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер корреспондентского счета получателя</td>
+                    <td style="#f9f9f9">beneficiary_bank_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН получателя</td>
+                    <td style="#f9f9f9">beneficiary_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">КПП получателя</td>
+                    <td style="#f9f9f9">beneficiary_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Получатель</td>
+                    <td style="#f9f9f9">beneficiary</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер счета получателя</td>
+                    <td style="#f9f9f9">beneficiary_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Вид операции</td>
+                    <td style="#f9f9f9">operation_type</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Код назначения платежа</td>
+                    <td style="#f9f9f9">payment_purpose_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Код - Уникальный идентификатор начислений</td>
+                    <td style="#f9f9f9">uin_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Очередь платежа</td>
+                    <td style="#f9f9f9">payment_priority</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Резервное поле</td>
+                    <td style="#f9f9f9">reserve_field</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Код бюджетной классификации</td>
+                    <td style="#f9f9f9">budget_classification_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ОКТМО</td>
+                    <td style="#f9f9f9">oktmo_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Код основания платежа</td>
+                    <td style="#f9f9f9">payment_basis_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Код налогового периода</td>
+                    <td style="#f9f9f9">tax_period_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер документа, который является основанием платежа</td>
+                    <td style="#f9f9f9">document_payment_basis_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата документа, который является основанием платежа</td>
+                    <td style="#f9f9f9">document_payment_basis_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Тип платежа — код выплаты</td>
+                    <td style="#f9f9f9">payment_type_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Назначение платежа</td>
+                    <td style="#f9f9f9">payment_purpose</td>
+                </tr>
+            
+                    </table>
+                
+            <h2 id="Справка-КС-3">Справка КС-3 (rus.reference.ks3.type1)</h2>
+            <table>
+                <tr>
+                    <th>Названия полей</th>
+                    <th>Названия в системе</th>
+                </tr>
+        
+                <tr>
+                    <td style="#f9f9f9">ОКУД</td>
+                    <td style="#f9f9f9">okud_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ОКПО инвестора</td>
+                    <td style="#f9f9f9">okpo_investor</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ОКПО заказчика</td>
+                    <td style="#f9f9f9">okpo_customer</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ОКПО подрядчика</td>
+                    <td style="#f9f9f9">okpo_contractor</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ОКПО стройки</td>
+                    <td style="#f9f9f9">okpo_construction</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Вид деятельности по ОКДП</td>
+                    <td style="#f9f9f9">okdp_activity_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Вид операции</td>
+                    <td style="#f9f9f9">operation_type</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер договора</td>
+                    <td style="#f9f9f9">contract_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата договора</td>
+                    <td style="#f9f9f9">contract_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Инвестор</td>
+                    <td style="#f9f9f9">investor</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Заказчик (Генподрядчик)</td>
+                    <td style="#f9f9f9">customer</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Подрядчик (Субподрядчик)</td>
+                    <td style="#f9f9f9">contractor</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Стройка</td>
+                    <td style="#f9f9f9">construction</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Объект</td>
+                    <td style="#f9f9f9">object</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер</td>
+                    <td style="#f9f9f9">number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата</td>
+                    <td style="#f9f9f9">date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Отчетный период с</td>
+                    <td style="#f9f9f9">accounting_period_from</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Отчетный период по</td>
+                    <td style="#f9f9f9">accounting_period_to</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Таблица</td>
+                    <td style="#f9f9f9">tab</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Итого</td>
+                    <td style="#f9f9f9">total</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма НДС</td>
+                    <td style="#f9f9f9">including_vat</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Всего с учетом НДС</td>
+                    <td style="#f9f9f9">total_with_vat</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Заказчик - должность</td>
+                    <td style="#f9f9f9">customer_position</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Заказчик - подпись</td>
+                    <td style="#f9f9f9">customer_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Заказчик - расшифровка подписи</td>
+                    <td style="#f9f9f9">customer_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Заказчик - печать</td>
+                    <td style="#f9f9f9">customer_stamping_zone</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Подрядчик - должность</td>
+                    <td style="#f9f9f9">contractor_position</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Подрядчик - подпись</td>
+                    <td style="#f9f9f9">contractor_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Подрядчик - расшифровка подписи</td>
+                    <td style="#f9f9f9">contractor_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Подрядчик - печать</td>
+                    <td style="#f9f9f9">contractor_stamping_zone</td>
+                </tr>
+            
+                    </table>
+                
+            <h2 id="Справка-о-постановке-на-учет-(снятии-с-учета)-физического-лица-в-качестве-налогоплательщика-налога-на-профессиональный-доход">Справка о постановке на учет (снятии с учета) физического лица в качестве налогоплательщика налога на профессиональный доход (rus.prof_income.reg.certificate.type1)</h2>
+            <table>
+                <tr>
+                    <th>Названия полей</th>
+                    <th>Названия в системе</th>
+                </tr>
+        
+                <tr>
+                    <td style="#f9f9f9">Ф.И.О. налогоплательщика</td>
+                    <td style="#f9f9f9">surname_name_patronymic</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН</td>
+                    <td style="#f9f9f9">inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Таблица со сведениями о периодах учета физического лица в качестве налогоплательщика налога на профессиональный доход</td>
+                    <td style="#f9f9f9">tab</td>
+                </tr>
+            
+                    </table>
+                
+            <h2 id="Счет-1С">Счет 1С (rus.invoice.type1)</h2>
+            <table>
+                <tr>
+                    <th>Названия полей</th>
+                    <th>Названия в системе</th>
+                </tr>
+        
+                <tr>
+                    <td style="#f9f9f9">НДС - ставка</td>
+                    <td style="#f9f9f9">vat_rate</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Грузоотправитель и его адрес</td>
+                    <td style="#f9f9f9">shipper</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Грузополучатель и его адрес</td>
+                    <td style="#f9f9f9">consignee</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Получатель</td>
+                    <td style="#f9f9f9">beneficiary</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Счет получателя (расчетный счет)</td>
+                    <td style="#f9f9f9">beneficiary_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Банк получателя</td>
+                    <td style="#f9f9f9">beneficiary_bank</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Счет банка получателя (корреспондентский счет)</td>
+                    <td style="#f9f9f9">beneficiary_bank_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">БИК получателя</td>
+                    <td style="#f9f9f9">beneficiary_bik</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН получателя</td>
+                    <td style="#f9f9f9">beneficiary_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">КПП получателя</td>
+                    <td style="#f9f9f9">beneficiary_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата счета</td>
+                    <td style="#f9f9f9">date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер счета</td>
+                    <td style="#f9f9f9">number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Покупатель, плательщик, заказчик</td>
+                    <td style="#f9f9f9">customer</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Имя покупателя, плательщика, заказчика (из реквизитов)</td>
+                    <td style="#f9f9f9">customer_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Адрес покупателя, плательщика, заказчика (из реквизитов)</td>
+                    <td style="#f9f9f9">customer_address</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Телефон покупателя, плательщика, заказчика (из реквизитов)</td>
+                    <td style="#f9f9f9">customer_phone</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН покупателя, плательщика, заказчика (из реквизитов)</td>
+                    <td style="#f9f9f9">customer_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">КПП покупателя, плательщика, заказчика (из реквизитов)</td>
+                    <td style="#f9f9f9">customer_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Поставщик, исполнитель, продавец</td>
+                    <td style="#f9f9f9">provider</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Имя поставщика, исполнителя, продавца (из реквизитов)</td>
+                    <td style="#f9f9f9">provider_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Адрес поставщика, исполнителя, продавца (из реквизитов)</td>
+                    <td style="#f9f9f9">provider_address</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Телефон поставщика, исполнителя, продавца (из реквизитов)</td>
+                    <td style="#f9f9f9">provider_phone</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН поставщика, исполнителя, продавца (из реквизитов)</td>
+                    <td style="#f9f9f9">provider_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">КПП поставщика, исполнителя, продавца (из реквизитов)</td>
+                    <td style="#f9f9f9">provider_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Основание</td>
+                    <td style="#f9f9f9">basis</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Итого</td>
+                    <td style="#f9f9f9">total</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">НДС</td>
+                    <td style="#f9f9f9">vat</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Итого к оплате</td>
+                    <td style="#f9f9f9">total_to_pay</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Всего наименований</td>
+                    <td style="#f9f9f9">total_items</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма словами</td>
+                    <td style="#f9f9f9">amount_words</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Сумма числом</td>
+                    <td style="#f9f9f9">amount_numbers</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Таблица, содержащая сведения о товарах (работах, услугах)</td>
+                    <td style="#f9f9f9">tab</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Руководитель организации или иное уполномоченное лицо</td>
+                    <td style="#f9f9f9">director</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Главный бухгалтер или иное уполномоченное лицо</td>
+                    <td style="#f9f9f9">accountant</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Печать</td>
+                    <td style="#f9f9f9">stamp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Подпись руководителя организации или иного уполномоченного лица</td>
+                    <td style="#f9f9f9">director_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Подпись бухгалтера или иного уполномоченного лица</td>
+                    <td style="#f9f9f9">accountant_signature</td>
+                </tr>
+            
+                    </table>
+                
+            <h2 id="Счет-фактура">Счет-фактура (rus.invoice.tax.type1)</h2>
+            <table>
+                <tr>
+                    <th>Названия полей</th>
+                    <th>Названия в системе</th>
+                </tr>
+        
+                <tr>
+                    <td style="#f9f9f9">Номер счета-фактуры</td>
+                    <td style="#f9f9f9">invoice_tax_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата счета-фактуры</td>
+                    <td style="#f9f9f9">invoice_tax_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер исправления счета-фактуры</td>
+                    <td style="#f9f9f9">amend_invoice_tax_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата исправления счета-фактуры</td>
+                    <td style="#f9f9f9">amend_invoice_tax_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Продавец</td>
+                    <td style="#f9f9f9">seller</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Адрес продавца</td>
+                    <td style="#f9f9f9">seller_address</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН и КПП продавца</td>
+                    <td style="#f9f9f9">seller_inn_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Грузоотправитель и его адрес</td>
+                    <td style="#f9f9f9">shipper</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Имя грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Адрес грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_address</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Телефон грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_phone</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">КПП грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Банковский счёт грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Название банка грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_bank_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">БИК банка грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_bank_bik</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Корреспондентский счёт банка грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_corr_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Грузополучатель и его адрес</td>
+                    <td style="#f9f9f9">consignee</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Имя грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Адрес грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_address</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Телефон грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_phone</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">КПП грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Банковский счёт грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Название банка грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_bank_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">БИК банка грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_bank_bik</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Корреспондентский счёт банка грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_corr_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Платежно-расчетный документ</td>
+                    <td style="#f9f9f9">payment_doc</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Документ об отгрузке</td>
+                    <td style="#f9f9f9">shipping_document</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Покупатель</td>
+                    <td style="#f9f9f9">buyer</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Адрес покупателя</td>
+                    <td style="#f9f9f9">buyer_address</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН и КПП покупателя</td>
+                    <td style="#f9f9f9">buyer_inn_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Валюта: наименование, код</td>
+                    <td style="#f9f9f9">currency</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Идентификатор государственного контракта, договора (соглашения)</td>
+                    <td style="#f9f9f9">contract_id</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Руководитель организации или иное уполномоченное лицо - ФИО</td>
+                    <td style="#f9f9f9">director</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Руководитель организации - подпись</td>
+                    <td style="#f9f9f9">director_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Главный бухгалтер или иное уполномоченное лицо - ФИО</td>
+                    <td style="#f9f9f9">accountant</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Главный бухгалтер - подпись</td>
+                    <td style="#f9f9f9">accountant_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Индивидуальный предприниматель или иное уполномоченное лицо - ФИО</td>
+                    <td style="#f9f9f9">individual_entrepreneur</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Индивидуальный предприниматель - подпись</td>
+                    <td style="#f9f9f9">individual_entrepreneur_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Реквизиты свидетельства о государственной регистрации индивидуального предпринимателя</td>
+                    <td style="#f9f9f9">state_registration</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Таблица - сведения о товарах (работах, услугах)</td>
+                    <td style="#f9f9f9">tab</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Печать</td>
+                    <td style="#f9f9f9">stamping_zone</td>
+                </tr>
+            
+                    </table>
+                
+            <h2 id="ТТН">ТТН (rus.consignment_note.type1)</h2>
+            <table>
+                <tr>
+                    <th>Названия полей</th>
+                    <th>Названия в системе</th>
+                </tr>
+        
+                <tr>
+                    <td style="#f9f9f9">ОКУД</td>
+                    <td style="#f9f9f9">okud_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата составления</td>
+                    <td style="#f9f9f9">date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер</td>
+                    <td style="#f9f9f9">number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ОКПО грузоотправителя</td>
+                    <td style="#f9f9f9">okpo_shipper</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ОКПО грузополучателя</td>
+                    <td style="#f9f9f9">okpo_consignee</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ОКПО плательщика</td>
+                    <td style="#f9f9f9">okpo_payer</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Грузоотправитель</td>
+                    <td style="#f9f9f9">shipper</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Грузополучатель</td>
+                    <td style="#f9f9f9">consignee</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Плательщик</td>
+                    <td style="#f9f9f9">payer</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Количество листов</td>
+                    <td style="#f9f9f9">sheets_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер бланка</td>
+                    <td style="#f9f9f9">form_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Количество порядковых номеров записей</td>
+                    <td style="#f9f9f9">sequential_records_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Всего наименований</td>
+                    <td style="#f9f9f9">total_items</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Масса груза (нетто)</td>
+                    <td style="#f9f9f9">cargo_weight_net</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Всего мест</td>
+                    <td style="#f9f9f9">total_seats</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Масса груза (брутто)</td>
+                    <td style="#f9f9f9">cargo_weight_gross</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Количество листов в приложении</td>
+                    <td style="#f9f9f9">attachment_sheets_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Количество листов в приложении прописью</td>
+                    <td style="#f9f9f9">attachment_sheets_number_words</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Всего отпущено на сумму, руб</td>
+                    <td style="#f9f9f9">total_released_amount_rub</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Всего отпущено на сумму, коп</td>
+                    <td style="#f9f9f9">total_released_amount_penny</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Отпуск разрешил - должность</td>
+                    <td style="#f9f9f9">cargo_release_authorized_position</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Отпуск разрешил - подпись</td>
+                    <td style="#f9f9f9">cargo_release_authorized_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Отпуск разрешил - расшифровка подписи</td>
+                    <td style="#f9f9f9">cargo_release_authorized_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Главный бухгалтер - подпись</td>
+                    <td style="#f9f9f9">accountant_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Главный бухгалтер - расшифровка подписи</td>
+                    <td style="#f9f9f9">accountant</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Отпуск груза произвел - должность</td>
+                    <td style="#f9f9f9">cargo_release_produced_position</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Отпуск груза произвел - подпись</td>
+                    <td style="#f9f9f9">cargo_release_produced_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Отпуск груза произвел - расшифровка подписи</td>
+                    <td style="#f9f9f9">cargo_release_produced_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата отпуска груза</td>
+                    <td style="#f9f9f9">shipment_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Доверенность - номер</td>
+                    <td style="#f9f9f9">proxy_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Доверенность - дата</td>
+                    <td style="#f9f9f9">proxy_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Доверенность - кем выдана</td>
+                    <td style="#f9f9f9">proxy_authority</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Груз к перевозке принял - должность</td>
+                    <td style="#f9f9f9">cargo_accepted_position</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Груз к перевозке принял - подпись</td>
+                    <td style="#f9f9f9">cargo_accepted_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Груз к перевозке принял - расшифровка подписи</td>
+                    <td style="#f9f9f9">cargo_accepted_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Всего отпущено на (копеек)</td>
+                    <td style="#f9f9f9">total_release_amount_penny</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Всего отпущено на (рублей)</td>
+                    <td style="#f9f9f9">total_release_amount_rub</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">При личном приеме товара по количеству и ассортименту</td>
+                    <td style="#f9f9f9">quantity_assortment</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Груз получил грузополучатель - должность</td>
+                    <td style="#f9f9f9">cargo_received_position</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Груз получил грузополучатель - подпись</td>
+                    <td style="#f9f9f9">cargo_received_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Груз получил грузополучатель - расшифровка подписи</td>
+                    <td style="#f9f9f9">cargo_received_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Таблица Товарный раздел</td>
+                    <td style="#f9f9f9">tab</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Имя плательщика (из реквизитов)</td>
+                    <td style="#f9f9f9">payer_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Адрес плательщика (из реквизитов)</td>
+                    <td style="#f9f9f9">payer_address</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Телефон плательщика (из реквизитов)</td>
+                    <td style="#f9f9f9">payer_phone</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН плательщика (из реквизитов)</td>
+                    <td style="#f9f9f9">payer_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">КПП плательщика (из реквизитов)</td>
+                    <td style="#f9f9f9">payer_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Банковский счёт плательщика (из реквизитов)</td>
+                    <td style="#f9f9f9">payer_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Название банка плательщика (из реквизитов)</td>
+                    <td style="#f9f9f9">payer_bank_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">БИК банка плательщика (из реквизитов)</td>
+                    <td style="#f9f9f9">payer_bank_bik</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Корреспондентский счёт банка плательщика (из реквизитов)</td>
+                    <td style="#f9f9f9">payer_corr_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Имя грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Адрес грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_address</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Телефон грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_phone</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">КПП грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Банковский счёт грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Название банка грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_bank_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">БИК банка грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_bank_bik</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Корреспондентский счёт банка грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_corr_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Имя грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Адрес грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_address</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Телефон грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_phone</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">КПП грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Банковский счёт грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Название банка грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_bank_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">БИК банка грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_bank_bik</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Корреспондентский счёт банка грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_corr_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">грузоотправитель - место для печати</td>
+                    <td style="#f9f9f9">shipper_stamping_zone</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">грузополучатель - место для печати</td>
+                    <td style="#f9f9f9">consignee_stamping_zone</td>
+                </tr>
+            
+                    </table>
+                
+            <h2 id="УКД">УКД (rus.ukd.type1)</h2>
+            <table>
+                <tr>
+                    <th>Названия полей</th>
+                    <th>Названия в системе</th>
+                </tr>
+        
+                <tr>
+                    <td style="#f9f9f9">Статус</td>
+                    <td style="#f9f9f9">status</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер корректировочного счета-фактуры</td>
+                    <td style="#f9f9f9">invoice_tax_corr_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата корректировочного счета-фактуры</td>
+                    <td style="#f9f9f9">invoice_tax_corr_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер исправленного корректировочного счета-фактуры</td>
+                    <td style="#f9f9f9">amend_invoice_tax_corr_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата исправленного корректировочного счета-фактуры</td>
+                    <td style="#f9f9f9">amend_invoice_tax_corr_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер счета-фактуры</td>
+                    <td style="#f9f9f9">invoice_tax_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата счета-фактуры</td>
+                    <td style="#f9f9f9">invoice_tax_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер исправленного счета-фактуры</td>
+                    <td style="#f9f9f9">amend_invoice_tax_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата исправленного счета-фактуры</td>
+                    <td style="#f9f9f9">amend_invoice_tax_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Продавец</td>
+                    <td style="#f9f9f9">seller</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Адрес продавца</td>
+                    <td style="#f9f9f9">seller_address</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН и КПП продавца</td>
+                    <td style="#f9f9f9">seller_inn_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Покупатель</td>
+                    <td style="#f9f9f9">buyer</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Адрес покупателя</td>
+                    <td style="#f9f9f9">buyer_address</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН и КПП покупателя</td>
+                    <td style="#f9f9f9">buyer_inn_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Валюта: наименование, код</td>
+                    <td style="#f9f9f9">currency</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Идентификатор государственного контракта, договора (соглашения) (при наличии)</td>
+                    <td style="#f9f9f9">contract_id</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Количество листов, на которых составлен документ</td>
+                    <td style="#f9f9f9">sheets_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Руководитель организации или иное уполномоченное лицо</td>
+                    <td style="#f9f9f9">director</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Главный бухгалтер или иное уполномоченное лицо</td>
+                    <td style="#f9f9f9">accountant</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Индивидуальный предприниматель или иное уполномоченное лицо</td>
+                    <td style="#f9f9f9">individual_entrepreneur</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Реквизиты свидетельства о государственной регистрации индивидуального предпринимателя</td>
+                    <td style="#f9f9f9">state_registration</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Главный бухгалтер или иное уполномоченное лицо - подпись</td>
+                    <td style="#f9f9f9">accountant_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Руководитель организации или иное уполномоченное лицо - подпись</td>
+                    <td style="#f9f9f9">director_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Индивидуальный предприниматель - подпись</td>
+                    <td style="#f9f9f9">individual_entrepreneur_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">К передаточным (отгрузочным) документам</td>
+                    <td style="#f9f9f9">shipping_document</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Основание изменения стоимости</td>
+                    <td style="#f9f9f9">price_change_basis</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Иные сведения</td>
+                    <td style="#f9f9f9">other_info</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Предложил изменить стоимость - ФИО</td>
+                    <td style="#f9f9f9">price_change_suggested_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Предложил изменить стоимость - должность</td>
+                    <td style="#f9f9f9">price_change_suggested_position</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Предложил изменить стоимость - подпись</td>
+                    <td style="#f9f9f9">price_change_suggested_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Уведомил об изменении стоимости - ФИО</td>
+                    <td style="#f9f9f9">price_change_notified_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Уведомил об изменении стоимости - должность</td>
+                    <td style="#f9f9f9">price_change_notified_position</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Уведомил об изменении стоимости - подпись</td>
+                    <td style="#f9f9f9">price_change_notified_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Ответственный за правильность оформления факта хозяйственной жизни - со стороны продавца - ФИО</td>
+                    <td style="#f9f9f9">responsible_economic_name_selling</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Ответственный за правильность оформления факта хозяйственной жизни - со стороны продавца - должность</td>
+                    <td style="#f9f9f9">responsible_economic_position_selling</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Ответственный за правильность оформления факта хозяйственной жизни - со стороны продавца - подпись</td>
+                    <td style="#f9f9f9">responsible_economic_signature_selling</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Название экономического субъекта - составителя документа - со стороны продавца</td>
+                    <td style="#f9f9f9">economic_entity_selling</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Предложил изменить стоимость - печать</td>
+                    <td style="#f9f9f9">price_change_suggested_stamping_zone</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Согласился с изменением стоимости - ФИО</td>
+                    <td style="#f9f9f9">price_change_agreed_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Согласился с изменением стоимости - должность</td>
+                    <td style="#f9f9f9">price_change_agreed_position</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Согласился с изменением стоимости - подпись</td>
+                    <td style="#f9f9f9">price_change_agreed_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата соглашения</td>
+                    <td style="#f9f9f9">agreement_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Ответственный за правильность оформления факта хозяйственной жизни - со стороны покупателя - ФИО</td>
+                    <td style="#f9f9f9">responsible_economic_name_buying</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Ответственный за правильность оформления факта хозяйственной жизни - со стороны покупателя - должность</td>
+                    <td style="#f9f9f9">responsible_economic_position_buying</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Ответственный за правильность оформления факта хозяйственной жизни - со стороны покупателя - подпись</td>
+                    <td style="#f9f9f9">responsible_economic_signature_buying</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Название экономического субъекта - составителя документа - со стороны покупателя</td>
+                    <td style="#f9f9f9">economic_entity_buying</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Согласился с изменением стоимости - печать</td>
+                    <td style="#f9f9f9">price_change_agreed_stamping_zone</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Таблица с данными о товарах (выполненных работах, оказанных услугах), имущественных правах</td>
+                    <td style="#f9f9f9">tab</td>
+                </tr>
+            
+                    </table>
+                
+            <h2 id="УПД">УПД (rus.upd.type1)</h2>
+            <table>
+                <tr>
+                    <th>Названия полей</th>
+                    <th>Названия в системе</th>
+                </tr>
+        
+                <tr>
+                    <td style="#f9f9f9">Статус</td>
+                    <td style="#f9f9f9">status</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер счета-фактуры</td>
+                    <td style="#f9f9f9">invoice_tax_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата счета-фактуры</td>
+                    <td style="#f9f9f9">invoice_tax_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер исправления счета-фактуры</td>
+                    <td style="#f9f9f9">amend_invoice_tax_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата исправления счета-фактуры</td>
+                    <td style="#f9f9f9">amend_invoice_tax_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Продавец</td>
+                    <td style="#f9f9f9">seller</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Адрес продавца</td>
+                    <td style="#f9f9f9">seller_address</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН и КПП продавца</td>
+                    <td style="#f9f9f9">seller_inn_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Грузоотправитель и его адрес</td>
+                    <td style="#f9f9f9">shipper</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Грузополучатель и его адрес</td>
+                    <td style="#f9f9f9">consignee</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Платежно-расчетный документ</td>
+                    <td style="#f9f9f9">payment_doc</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Документ об отгрузке</td>
+                    <td style="#f9f9f9">shipment_document</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Покупатель</td>
+                    <td style="#f9f9f9">buyer</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Адрес покупателя</td>
+                    <td style="#f9f9f9">buyer_address</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН и КПП покупателя</td>
+                    <td style="#f9f9f9">buyer_inn_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Валюта: наименование, код</td>
+                    <td style="#f9f9f9">currency</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Идентификатор государственного контракта, договора (соглашения) (при наличии)</td>
+                    <td style="#f9f9f9">contract_id</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Код поставщика</td>
+                    <td style="#f9f9f9">provider_code</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Номер заказа</td>
+                    <td style="#f9f9f9">order_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Адрес доставки</td>
+                    <td style="#f9f9f9">delivery_address</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Основание передачи (сдачи) / получения (приемки)</td>
+                    <td style="#f9f9f9">transfer_basis</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Данные о транспортировке и грузе</td>
+                    <td style="#f9f9f9">cargo_data</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Количество листов, на которых составлен документ</td>
+                    <td style="#f9f9f9">sheets_number</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Руководитель организации или иное уполномоченное лицо</td>
+                    <td style="#f9f9f9">director</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Главный бухгалтер или иное уполномоченное лицо</td>
+                    <td style="#f9f9f9">accountant</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Индивидуальный предприниматель</td>
+                    <td style="#f9f9f9">individual_entrepreneur</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Реквизиты свидетельства о государственной регистрации индивидуального предпринимателя</td>
+                    <td style="#f9f9f9">state_registration</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Главный бухгалтер или иное уполномоченное лицо - подпись</td>
+                    <td style="#f9f9f9">accountant_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Руководитель организации или иное уполномоченное лицо - подпись</td>
+                    <td style="#f9f9f9">director_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Индивидуальный предприниматель - подпись</td>
+                    <td style="#f9f9f9">individual_entrepreneur_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Передал товар (груз) / услуги, результаты работ, права сдал - должность</td>
+                    <td style="#f9f9f9">cargo_delivered_position</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Передал товар (груз) / услуги, результаты работ, права сдал - подпись</td>
+                    <td style="#f9f9f9">cargo_delivered_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Передал товар (груз) / услуги, результаты работ, права сдал - ФИО</td>
+                    <td style="#f9f9f9">cargo_delivered_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата отгрузки, передачи (сдачи)</td>
+                    <td style="#f9f9f9">shipment_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Иные сведения об отгрузке, передаче</td>
+                    <td style="#f9f9f9">other_info_shipment</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Ответственный за правильность оформления факта хозяйственной жизни - передача груза - ФИО</td>
+                    <td style="#f9f9f9">responsible_economic_name_transfer</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Ответственный за правильность оформления факта хозяйственной жизни - передача груза - должность</td>
+                    <td style="#f9f9f9">responsible_economic_position_transfer</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Ответственный за правильность оформления факта хозяйственной жизни - передача груза - подпись</td>
+                    <td style="#f9f9f9">responsible_economic_signature_transfer</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Название экономического субъекта - составителя документа - передача груза</td>
+                    <td style="#f9f9f9">economic_entity_transfer</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Получил товар (груз) / услуги, результаты работ, права принял - ФИО</td>
+                    <td style="#f9f9f9">cargo_accepted_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Получил товар (груз) / услуги, результаты работ, права принял - подпись</td>
+                    <td style="#f9f9f9">cargo_accepted_signature</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Получил товар (груз) / услуги, результаты работ, права принял - должность</td>
+                    <td style="#f9f9f9">cargo_accepted_position</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Дата получения (приемки)</td>
+                    <td style="#f9f9f9">acceptance_date</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Иные сведения о получении, приемке</td>
+                    <td style="#f9f9f9">other_info_acceptance</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Ответственный за правильность оформления факта хозяйственной жизни - приемка груза - ФИО</td>
+                    <td style="#f9f9f9">responsible_economic_name_acceptance</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Ответственный за правильность оформления факта хозяйственной жизни - приемка груза - должность</td>
+                    <td style="#f9f9f9">responsible_economic_position_acceptance</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Ответственный за правильность оформления факта хозяйственной жизни - приемка груза - подпись</td>
+                    <td style="#f9f9f9">responsible_economic_signature_acceptance</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Название экономического субъекта - составителя документа - приемка груза</td>
+                    <td style="#f9f9f9">economic_entity_acceptance</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Таблица с данными о товарах (выполненных работах, оказанных услугах), имущественных правах</td>
+                    <td style="#f9f9f9">tab</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Имя грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Адрес грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_address</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Телефон грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_phone</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">КПП грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Банковский счёт грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Название банка грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_bank_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">БИК банка грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_bank_bik</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Корреспондентский счёт банка грузоотправителя (из реквизитов)</td>
+                    <td style="#f9f9f9">shipper_corr_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Имя грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Адрес грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_address</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Телефон грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_phone</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">ИНН грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_inn</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">КПП грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_kpp</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Банковский счёт грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Название банка грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_bank_name</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">БИК банка грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_bank_bik</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Корреспондентский счёт банка грузополучателя (из реквизитов)</td>
+                    <td style="#f9f9f9">consignee_corr_account</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Получил товар (груз) / услуги, результаты работ, права принял - место для печати</td>
+                    <td style="#f9f9f9">cargo_accepted_stamping_zone</td>
+                </tr>
+            
+                <tr>
+                    <td style="#f9f9f9">Передал товар (груз) / услуги, результаты работ, права сдал - место для печати</td>
+                    <td style="#f9f9f9">cargo_delivered_stamping_zone</td>
+                </tr>
+            
+                    </table>
+                
+            <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">↑ Наверх</button>
+        </div>
+
+        <!-- The side window with the current document -->
+        <div class="current-mode" id="current-mode">Документ</div>
+    <script>
+        // A function for tracking the current document
+        const docSections = document.querySelectorAll('h2');
+        const currentDocElement = document.getElementById('current-mode');
+
+        function updateCurrentDoc() {
+            let currentDoc = '';
+            const viewportCenter = window.innerHeight / 2; // Center of the screen
+
+            // We go through all the document headings
+            docSections.forEach(section => {
+                // Finding the following table after the header
+                const table = section.nextElementSibling;
+                if (table && table.tagName === 'TABLE') {
+                    // Getting the borders of the header and the table
+                    const sectionRect = section.getBoundingClientRect();
+                    const tableRect = table.getBoundingClientRect();
+
+                    // Defining the boundaries of the entire block (header + table)
+                    const blockTop = Math.min(sectionRect.top, tableRect.top);
+                    const blockBottom = Math.max(sectionRect.bottom, tableRect.bottom);
+
+                    // We check whether the center of the screen is inside the block boundaries.
+                    if (viewportCenter >= blockTop && viewportCenter <= blockBottom) {
+                        currentDoc = section.innerText;
+                    }
+                }
+            });
+
+            // Updating the text in the side window
+            currentDocElement.innerText = currentDoc;
+        }
+
+        //Monitoring the scrolling and resizing of the window
+        window.addEventListener('scroll', updateCurrentDoc);
+        window.addEventListener('resize', updateCurrentDoc);
+
+        // Initialization
+        updateCurrentDoc();
+    </script>
+    </body>
+    </html>
+    

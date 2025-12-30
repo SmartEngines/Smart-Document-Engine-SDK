@@ -1,0 +1,28 @@
+# Smart Document Engine What's New
+
+Smart Document Engine 3.0.0
+
+SDE 3.0.0 is a new powerful API for documents’ flow processing.
+
+SDE 3.0.0 presents: 
+– new system for flow analysis that supports per-document division out-of-box
+– new scene analysis system that supports recognition of several documents from one image (especially useful when recognizing identity documents that are often captured together)
+– new inner integration with Smart ID Engine that allows users of Smart Document Engine to recognize all identity documents with ID Engine accuracy and to combine their recognition with business documents recognition in one flow
+– new page location system for business documents that supports folded and curved sheets
+– new generation of fast text detection and recognition technologies. SDE 3.0.0 provides OCR results for all the processed pages (excluding typified identity documents). If the document was not typified, i.e. the image contains a document of unsupported type, OCR results with text coordinates are available.
+– new flexible document description model that allows us to unite earlier analysis steps and to provide efficient autoselection modes 
+– new document typification system for flexible documents that operates with documents similarities and differences 
+– new system for flexible document analysis and fields extraction
+– new table search and analysis system that operates with low-level and high-level image features and special table descriptors
+– new generation of recognition neural networks including our unique ‘’da Vinci’’ ANN architecture
+
+SDE 3.0.0 API differs from SDE 2.X.X (except 2.6.0 where the new API was provided with limited functionality). The major API differences are:
+– replacement of the combination of DocSession methods RegisterImage and Process with one method ProcessImage
+– replacement of GraphicalStructure with PhysicalDocument as a main tool to get information about document’s physical objects
+– depreciation of DocVideoSession and a number of other classes
+
+Be aware of the methods and classes that are softly deprecated, i.e. the methods work in the current version, but are to be deprecated soon. All these methods are marked with a special comment.
+
+Smart Text Engine note.
+
+Last December we presented a new API entitled Smart Text Engines that is a fast and memory-efficient tool for full-text OCR. STE is developed in sync with SDE, thus including our unique text detection and recognition models. If you are interested in full-text OCR only, please check Smart Text Engine. 

@@ -1,0 +1,68 @@
+#  Copyright (c) 2016-2025, Smart Engines Service LLC
+#  All rights reserved.
+
+CMAKE_MINIMUM_REQUIRED(VERSION 3.6)
+
+PROJECT (csdocengine)
+
+set(CMAKE_SKIP_BUILD_RPATH FALSE)
+set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
+set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
+# Include secommon and docengine headers
+INCLUDE_DIRECTORIES(../../include/)
+INCLUDE_DIRECTORIES(../../../secommon/include)
+
+# Find and setup SWIG
+find_library(DOCENGINE_LIBRARY docengine HINTS ${LIBRARY_PATH})
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fpermissive -std=c++11")
+find_package(SWIG 4.1.1 EXACT REQUIRED)
+
+INCLUDE(${SWIG_USE_FILE})
+
+# SWIG module in CMake does not know that dll library on Windows platform is RUNTIME target.
+# As the result, CMake puts library into wrong directory. Here is a fix for this issue.
+IF(WIN32)
+  SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+  SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG "${CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG}")
+  SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE "${CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE}")
+ENDIF(WIN32)
+
+SET(DOCENGINE_SWIG_FILE docengine.i)
+SET(SECOMMON_SWIG_FILE secommon.i)
+
+# Generate csharp sources
+SET_SOURCE_FILES_PROPERTIES(${DOCENGINE_SWIG_FILE} PROPERTIES CPLUSPLUS ON SWIG_INCLUDE_DIRECTORIES ../../include)
+SET_SOURCE_FILES_PROPERTIES(${SECOMMON_SWIG_FILE} PROPERTIES CPLUSPLUS ON SWIG_INCLUDE_DIRECTORIES ../../include)
+
+LIST(APPEND docengine_options -namespace se.doc)
+SET_SOURCE_FILES_PROPERTIES(${DOCENGINE_SWIG_FILE} PROPERTIES SWIG_FLAGS "${docengine_options}")
+
+LIST(APPEND secommon_options -namespace se.common)
+SET_SOURCE_FILES_PROPERTIES(${SECOMMON_SWIG_FILE} PROPERTIES SWIG_FLAGS "${secommon_options}")
+
+SWIG_ADD_MODULE(csdocengine csharp ${DOCENGINE_SWIG_FILE} ${SECOMMON_SWIG_FILE})
+
+set_property(TARGET csdocengine PROPERTY SWIG_USE_TARGET_INCLUDE_DIRECTORIES TRUE)
+set_property(TARGET csdocengine PROPERTY GENERATED_COMPILE_OPTIONS "-fPIC")
+set_property(TARGET csdocengine PROPERTY LINK_OPTIONS "-Wl,--enable-new-dtags")
+
+SET(CMAKE_EXE_LINKER_FLAGS "-Wl,--enable-new-dtags")
+
+TARGET_LINK_LIBRARIES(csdocengine ${DOCENGINE_LIBRARY})
+SWIG_LINK_LIBRARIES(csdocengine ${DOCENGINE_LIBRARY})
+
+
+# Install the csharp lib
+set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}/../../")
+set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/bin")
+
+INSTALL(TARGETS csdocengine
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION bin)
+
+# Install all CS files in /bindings/csharp dir
+INSTALL(
+  CODE "FILE(GLOB cs_files \"${CMAKE_CURRENT_BINARY_DIR}/*.cs\")"
+  CODE "FILE(INSTALL \${cs_files} DESTINATION \${CMAKE_INSTALL_PREFIX}/bindings/csharp)"
+)
