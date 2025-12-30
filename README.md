@@ -1,13 +1,10 @@
-# Smart-Document-Engine SDK Overview
+# Smart Document Engine SDK Overview
 
 This is a collection of DEMO builds of Smart Document Engine SDK developed by Smart Engines. The SDK examples can be used to demonstrate the integration possibilities and understand the basic object recognition workflows.
 
-* [:warning: Personalized signature :warning:](#warning-personalized-signature-warning)
+  * [:warning: Personalized signature :warning:](#warning-personalized-signature-warning)
   * [Troubleshooting and help](#troubleshooting-and-help)
   * [General Usage Workflow](#general-usage-workflow)
-  * [Arbitrary document OCR](#arbitrary-document-ocr)
-  * [Multipage document recognition](#multipage-document-recognition)
-  * [Result export to PDF](#result-export-to-pdf)
   * [Smart Document Engine SDK Overview](#smart-document-engine-sdk-overview)
     - [Header files, namespaces, and modules](#header-files-namespaces-and-modules)
     - [Code documentation](#code-documentation)
@@ -17,6 +14,7 @@ This is a collection of DEMO builds of Smart Document Engine SDK developed by Sm
   * [Specifying document types for DocSession](#specifying-document-types-for-docsession)
     - [Supported document types](#supported-document-types)
     - [Enabling document types using wildcard expressions](#enabling-document-types-using-wildcard-expressions)
+    - [Session modes](#session-modes)
   * [Session options](#session-options)
   * [Java API Specifics](#java-api-specifics)
     - [Object deallocation](#object-deallocation)
@@ -25,7 +23,7 @@ This is a collection of DEMO builds of Smart Document Engine SDK developed by Sm
 
 ## :warning: Personalized signature :warning:
 
-All Smart Document Engine SDK clients are required to use a personalized signature for starting a session. The signature is validated offline and locks to the copy of the native library, thus ensures that only an authorized client may use it. The signature is a string with 256 characters.
+Starting from Smart Document Engine v1.11.0 users are required to use a personalized signature for starting a session. The signature is validated offline and locks to the copy of the native library, thus ensures that only an authorized client may use it. The signature is a string with 256 characters.
 
 You will need to manually copy the signature string and pass it as an argument for the `SpawnSession()` method ([see item 6 below](#general-usage-workflow)). Do NOT keep the signature in any asset files, only inside code. If possible, clients are encouraged to keep the signature in a controlled server and load it into the application via a secure channel, to ensure that signature and the library are separated.
 
@@ -134,33 +132,19 @@ But remember:
     Image image = Image.FromFile(image_path); // Loading from file
     ```
 
-7. Register the Image object in the session and set it as a current source
+7. Call `ProcessImage(...)` method for launching the image recognition
 
     ```cpp
     // C++
-    int image_id = session->RegisterImage(*image);
-    proc_settings->SetCurrentSourceID(image_id);
+    session->ProcessImage(*image, proc_settings.get());
     ```
 
     ```java
     // Java
-    int image_id = session.RegisterImage(image);
-    proc_settings.Process(proc_settings);
+    session.ProcessImage(image, proc_settings);
     ```
 
-8. Call `Process(...)` method for launching the session's processing routine
-
-    ```cpp
-    // C++
-    session->Process(*proc_settings);
-    ```
-
-    ```java
-    // Java
-    session.Process(proc_settings);
-    ```
-
-9. Obtain the current result from the session
+8. Obtain the current result from the session
 
     ```cpp
     // C++
@@ -172,7 +156,7 @@ But remember:
     DocResult result = session.GetCurrentResult();
     ```
 
-10. Use `DocResult` fields to extract recognized information:
+9. Use `DocResult` fields to extract recognized information:
 
     ```cpp
     // C++
@@ -210,230 +194,6 @@ But remember:
             String field_value = it.GetField().GetOcrString().GetFirstString().GetCStr();
         }
     }
-    ```
-
-## Arbitrary document OCR
-
-Smart Document Engine provides special document types that enable the recognition of all the text in the arbitrary document. These types start with `text`, then contains the language code, and ends with either `simple` or `photo`. For example, for English language the types are `text.eng.simple` and `text.eng.photo`. 
-
-To recognize scanned images enable `simple` document type, i.e., `text.eng.simple`.
-
-To recognize photos enable `photo` document type, i.e., `text.eng.photo`.
-
-Thus, following the general workflow you should enable the necessary type:
-
-
-```cpp
-    // C++
-    settings->AddEnabledDocumentTypes("text.eng.simple"); // Scanned arbitrary English document
-```
-
-```java
-    // Java
-    settings.AddEnabledDocumentTypes("text.eng.simple"); // Scanned arbitrary English document
-```
-
-To get all the languages available for OCR, employ a procedure described in [Specifying document types for DocSession](#specifying-document-types-for-docsession).
-
-Arbitrary document processing follows the [General Usage Workflow](#general-usage-workflow). Thus, the process of result obtaining is the following:
-
-```cpp
-    // C++
-    const se::doc::DocResult& result = session->GetCurrentResult();
-```
-
-```java
-    // Java
-    DocResult result = session.GetCurrentResult();
-``` 
-
-Use ``DocResult`` to get the recognized information:
-
-```cpp
-    // C++
-    // Going through the found documents
-    for (auto doc_it = result.DocumentsBegin();
-         doc_it != result.DocumentsEnd();
-         ++doc_it) {
-        const se::doc::Document& doc = doc_it.GetDocument();
-        
-        // Going through the text fields
-        for (auto it = doc.TextFieldsBegin();
-             it != doc.TextFieldsEnd();
-             ++it) {
-
-            // Getting text field value (UTF-8 string representation)
-            std::string field_value = it.GetField().GetOcrString().GetFirstString().GetCStr();
-
-            // Getting the confidences of first altenatives
-            for (int char_idx = 0; char_idx < f_it.GetField().GetOcrString().GetCharsCount(); ++char_idx) {
-                float conf = f_it.GetField().GetOcrString().GetChar(char_idx).GetVariant(0).GetConfidence();
-            }
-        }
-    }
-```
-
-```java
-    // Java
-    // Going through the found documents
-    for (DocumentsIterator doc_it = result.DocumentsBegin();
-         !doc_it.Equals(result.DocumentsEnd());
-         doc_it.Advance()) {
-        Document doc = doc_it.GetDocument();
-
-        // Going through the text fields
-        for (DocTextFieldsIterator it = doc.TextFieldsBegin();
-             !it.Equals(doc.TextFieldsEnd());
-             it.Advance()) {
-
-            // Getting text field value (UTF-8 string representation)
-            String field_value = it.GetField().GetOcrString().GetFirstString().GetCStr();
-
-            // Getting the confidences of first altenatives
-            for (int char_idx = 0; char_idx < it.GetField().GetOcrString().GetCharsCount(); char_idx++) {
-                float conf = it.GetField().GetOcrString().GetChar(char_idx).GetVariant(0).GetConfidence();
-            }
-        }
-    }
-```
-## Multipage document recognition
-Documents can have several pages. You can send all the pages for recognition and get the overall result.
-Set recognition of multi-page documents as follows. For each image, create **DocProcessingSettings**, set the order number as its option, starting from 0 **(proc_settings->setOption("page_number", "0"))**, recognize images in one session, and take the result after recognizing all images.
-For example, for two images set multipage document recognition like this:
-
-```cpp
-    //image1
-std::unique_ptr<se::doc::DocProcessingSettings> proc_settings1(session->CreateProcessingSettings());
-proc_settings1->SetOption("page_number", "0");
-std::unique_ptr<se::common::Image> image1(se::common::Image::FromFile("image1.png"));
-int image_id1 = session->RegisterImage(*image1);
-proc_settings1->SetCurrentSourceID(image_id1);
-session->Process(*proc_settings1);
-
-   //image2
-std::unique_ptr<se::doc::DocProcessingSettings> proc_settings2(session->CreateProcessingSettings());
-proc_settings2->SetOption("page_number", "1");
-std::unique_ptr<se::common::Image> image2(se::common::Image::FromFile("image2.png"));
-int image_id2 = session->RegisterImage(*image2);
-proc_settings2->SetCurrentSourceID(image_id2);
-session->Process(*proc_settings2);
-
-    //getting the overall result
-const se::doc::DocResult& result = session->GetCurrentResult();
-```
-
-```java
-DocProcessingSettings proc_settings = session.CreateProcessingSettings();
-
-    // Creating an image object which will be used as an input for the session
-    Image image = Image.FromFile(image_path);
-    Image image2 = Image.FromFile(image_path2);
-
-    // Registering input image in the session,
-    int image_id = session.RegisterImage(image);
-    proc_settings.SetCurrentSourceID(image_id);  
-    proc_settings.SetOption("page_number", "0");
-    session.Process(proc_settings);
-    
-    // Create ProcessingSettings for new image 
-    proc_settings = session.CreateProcessingSettings();
-    
-    int image_id2 = session.RegisterImage(image2);
-    proc_settings.SetCurrentSourceID(image_id2);
-    proc_settings.SetOption("page_number", "1");
-    session.Process(proc_settings);
-
-    // Obtaining the recognition result
-    DocResult result = session.GetCurrentResult();
-```
-## Result export to PDF
-
-0. Before `SpawnSession` enable pdf/a creation with `enablePDF` option in `DocSessionSettings` 
-
-    ```cpp
-    // C++
-    settings->SetOption("enablePDF", "true");
-    ```
-
-    ```java
-    // Java
-    settings.SetOption("enablePDF", "true");
-    ```
-
-1. Obtain the mutable current result from the session
-
-    ```cpp
-    // C++
-    se::doc::DocResult& result = session->GetMutableCurrentResult();
-    ```
-
-    ```java
-    // Java
-    DocResult result = session.GetMutableCurrentResult();
-    ```
-
-2. Check if a pdf/a buffer can be obtained for the processed document
-
-    ```cpp
-    // C++
-    bool pdf_is_available = result.CanBuildPDFABuffer();
-    ```
-
-    ```java
-    // Java
-    Boolean pdf_is_available = result.CanBuildPDFABuffer();
-    ```
-
-3. Enable addition of text layer if needed (the default value is "image_only")
-
-   ```cpp
-    // C++
-    result.SetAddTextMode("image_with_text");
-    ```
-
-    ```java
-    // Java
-    result.SetAddTextMode("image_with_text");
-    ```
-
-4. Change text addition mode if you need exact character to character geometrical correspondence (the default value is "words"). Usage of this option will make the resulting file heavier
-
-    ```cpp
-    // C++
-    result.SetAddTextMode("chars");
-    ```
-
-    ```java
-    // Java
-    result.SetAddTextMode("chars");
-    ```
-
-5. Build a pdf/a buffer
-
-   ```cpp
-    // C++
-    result.BuildPDFABuffer();
-    ```
-
-    ```java
-    // Java
-    result.BuildPDFABuffer();
-    ```
-
-6. Get the resulting buffer size and copy it to a caller-created buffer
-
-    ```cpp
-    // C++
-    const size_t pdf_size = result.GetPDFABufferSize();
-    unsigned char* pdfb = new unsigned char[pdf_size];
-    result.GetPDFABuffer(pdfb, pdf_size);
-    ```
-
-    ```java
-    // Java
-    int pdf_size = result.GetPDFABufferSize();
-    byte[] pdfb = new byte[pdf_size];
-    result.GetPDFABuffer(pdfb);
     ```
 
 ## Smart Document Engine SDK Overview
@@ -470,7 +230,6 @@ Main Smart Document Engine classes are located within `se::doc` namespaces and a
 #include <docengine/doc_engine.h>              // Contains DocEngine class definition
 #include <docengine/doc_session_settings.h>    // Contains DocSessionSettings class definition
 #include <docengine/doc_session.h>             // Contains DocSession class definition
-#include <docengine/doc_video_session.h>       // Contains DocVideoSession class definition
 #include <docengine/doc_processing_settings.h> // Contains DocProcessingSettings class definition
 
 #include <docengine/doc_result.h>              // Contains DocResult class definition
@@ -479,14 +238,15 @@ Main Smart Document Engine classes are located within `se::doc` namespaces and a
 #include <docengine/doc_fields.h>              // Contains the definitions of Smart Document Engine fields
 #include <docengine/doc_fields_iterators.h>    // Contains fields-related iterators
 #include <docengine/doc_feedback.h>            // Contains the DocFeedback interface and associated containers
-#include <docengine/doc_external_processor.h>  // Contains the external document processing interface
 
-#include <docengine/doc_graphical_structure.h> // Contains DocGraphicalStructure class definition
-#include <docengine/doc_tags_collection.h>     // Contains DocTagsCollection class definition
+#include <docengine/doc_document_field_info.h> // Contains DocDocumentFieldInfo class definition
+#include <docengine/doc_document_fields_info_iterator.h> // Contains DocDocumentFieldInfo-related iterators
 
-#include <docengine/doc_view.h>                // Contains DocView class definition
-#include <docengine/doc_views_iterator.h>      // Contains DocView-related iterators
-#include <docengine/doc_views_collection.h>    // Contains DocViewsCollection class definition
+#include <docengine/doc_document_info.h> // Contains DocDocumentInfo class definition
+
+#include <docengine/doc_physical_document.h> // Contains DocPhysicalDocument, DocPhysicalPage, and DocPageInfo class definitions
+#include <docengine/doc_physical_document_iterators.h> // Contains DocPhysicalDocument-related iterators
+#include <docengine/doc_scene_info.h> // Contains DocSceneInfo class definition
 
 #include <docengine/doc_basic_object.h>                 // Contains DocBasicObject class definition
 #include <docengine/doc_basic_objects_iterator.h>       // Contains DocBasicObject-related iterators
@@ -495,6 +255,18 @@ Main Smart Document Engine classes are located within `se::doc` namespaces and a
 #include <docengine/doc_objects_collections_iterator.h> // Contains DocObjectsCollection-related iterators
 
 #include <docengine/doc_forward_declarations.h>         // Service header containing forward declarations of all classes
+
+/// Soflty deprecated headers (to be removed in future versions)
+
+#include <docengine/doc_video_session.h>       // Contains DocVideoSession class definition
+#include <docengine/doc_external_processor.h>  // Contains the external document processing interface
+
+#include <docengine/doc_graphical_structure.h> // Contains DocGraphicalStructure class definition
+#include <docengine/doc_tags_collection.h>     // Contains DocTagsCollection class definition
+
+#include <docengine/doc_view.h>                // Contains DocView class definition
+#include <docengine/doc_views_iterator.h>      // Contains DocView-related iterators
+#include <docengine/doc_views_collection.h>    // Contains DocViewsCollection class definition
 ```
 
 The same classes in Java API are located within `com.smartengines.doc` module:
@@ -624,6 +396,50 @@ As it was mentioned earlier, you can only enable document types that belong to t
 
 It's always better to enable the minimum number of document types as possible if you know exactly what are you going to recognize because the system will spend less time deciding which document type out of all enabled ones has been presented to it.
 
+#### Session modes
+
+Based on the list of supported document types in the configuration bundle, and on the document masks provided by the caller, the engine is determining which internal engine to use in the created session. However, what if there have to be multiple engines which support a certain document type? For example, a Russian 2-NDFL document (`rus.2ndfl.type1`) can be recognized both in the internal engine for recognition of all accounting documents, and in the internal engine for recognition of all Russian documents. To sort this out there is a concept of session modes.
+
+To get the list of available session modes in the provided configuration bundle, you can use the corresponding method of the `DocSessionSettings`:
+
+```cpp
+// C++
+for (auto it = settings->SupportedModesBegin();
+     it != settings->SupportedModesEnd();
+     ++it) {
+    // it.GetValue() is a name of a supported mode
+}
+```
+
+```java
+// Java
+for (StringsSetIterator it = settings.SupportedModesBegin();
+     !it.Equals(settings.SupportedModesEnd());
+     it.Advance()) {
+    // it.GetValue() is a name of a supported mode
+}
+```
+
+There is always a mode called `default` and it is enabled, well, by default. There are methods for getting the currently enabled mode and to set a new one:
+
+```cpp
+// C++
+std::string current_mode = settings->GetCurrentMode();
+
+settings->SetCurrentMode("primary_accounting"); // Setting a current mode to primary accounting 
+settings->AddEnabledDocumentTypes("*");  // Setting a document type mask _within a mode_
+```
+
+```java
+// Java
+String current_mode = settings.GetCurrentMode();
+
+settings.SetCurrentMode("primary_accounting"); // Setting a current mode to primary accounting
+settings.AddEnabledDocumentTypes("*"); // Setting a document type mask _within a mode_
+```
+
+Within any given configuration bundle there is a strict invariant: there cannot be internal engines which belong to the same mode and for which the subsets of supported documents types intersect.
+
 ## Session options
 
 Some configuration bundle options can be overriden in runtime using `DocSessionSettings` methods. You can obtain all currently set option names and their values using the following procedure:
@@ -669,25 +485,6 @@ Option values are always represented as strings, so if you want to pass an integ
 |----------------------------------------------:|-------------------------------------:|----------------------------------------------------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `enableMultiThreading`                        | `"true"` or `"false"`                | true                                                | Enables parallel execution of internal algorithms                                                                                                                                      |
 | `rgbPixelFormat`                              | String of characters R, G, B, and A  | RGB for 3-channel images, BGRA for 4-channel images | Sequence of color channels for session.Process() method image interpretation                                                                                                   |
-
-
-#### Other options
-
-|                                   Option name |                           Value type |                                             Default | Description                                                                                                                                                                            |
-|----------------------------------------------:|-------------------------------------:|----------------------------------------------------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`enablePDF`                                    | `"true"` or `"false"`                |false                                            |Enables PDF/A creation           |
-
-#### Session options for Arbitrary document OCR
-
-|                                   Option name |                           Value type |                                             Default | Description                                                                                                                                                                            |
-|----------------------------------------------:|-------------------------------------:|----------------------------------------------------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`providedCustomAlphabet`                       | string                               | Defined in documentation                                               |Restricts the recognition alphabet         |
-|`wordDict`                                     | string                               | none                                              |User-defined dictionary for postprocessing. Useful for specific words in separate lines.     |
-|`wordDictDivider`                              | string                              | `"\|"`                                              |Words divider for user-defined dictionary, e.g. `"THIS\|IS\|DICTIONARY"`     |
-|`substrDict`                                   | string                               | none                                              |User-defined dictionary for postprocessing. Useful for specific words inside long lines.     |
-|`substrDictDivider`                            | string                               | `"\|"`                                              |Words divider for user-defined dictionary, e.g. `"THIS\|IS\|OTHER\|DICTIONARY"`     |
-
-
 
 ## Java API Specifics
 
