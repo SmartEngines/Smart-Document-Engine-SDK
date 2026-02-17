@@ -1,0 +1,111 @@
+# Smart Document Engine What's New
+
+Smart Document Engine 3.1.0
+
+1. New Document Type Support for Accounting Documents: Beta support added for:
+    -   Act KS-2
+    -   Act MX-1
+    -   Act MX-3
+    -   Act OS-1
+    -   Act OS-1а
+    -   Act OS-4
+    -   Act OS-15
+    -   OGRN certificate 
+    -   OGRNIP certificate 
+    -   Certificate of calculation of ruble amounts of a document in foreign currency
+    -   Purchase book
+    -   Income statement for professional income tax
+    -   Register of certificates and declarations (appendix to the consignment note)
+    -   Financial performance report
+
+HR Documents: Added auto-selection mode for common HR documents (see full list below).
+
+Full List of Auto-Selectable HR Documents:
+
+-   Passport of a citizen of the the Russian Federation (main spread)
+-   Passport of a citizen of the the Russian Federation (registration spread)
+-   Military ID
+-   International passport of a citizen of the the Russian Federation
+-   Diplomas (bachelor, master, specialist)
+-   Secondary specialized professional diploma
+-   Driver's license of the Russian Federation
+-   Taxpayer identification number (INN) certificate
+-   Individual identification number (SNILS)
+-   STD-R
+-   Employment history book
+-   Residence permit of the Russian Federation
+-   Medical certificate (Beta)
+-   Migration card
+-   Moscow OMI policy
+-   Paper OMI policy
+-   Plastic OMI policy
+-   Bank account details for salary transfers
+-   Birth certificate
+-   Marriage certificate
+-   Certificate of name change
+-   Divorce certificate
+-   Death certificate
+-   2-NDFL 
+-   Certificate of no criminal record (Beta)
+-   Certificate of no debt on taxes
+-   STD-PFR (Electronic employment record book) (Beta)
+-   Notification of registration in the individual accounting system "ADI-REG"
+-   Passports & ID Cards of CIS Citizens:
+    -   International passport of a citizen of Azerbaijan
+    -   Armenia ID
+    -   International passport of a citizen of Armenia
+    -   Belarus ID
+    -   International passport of a citizen of Belarus
+    -   Driver's license of Belarus
+    -   Kazakhstan ID
+    -   International passport of a citizen of Kazakhstan
+    -   Kyrgyzstan ID
+    -   International passport of a citizen of Kyrgyzstan
+    -   Driver's license of Kyrgyzstan
+    -   International passport of a citizen of Moldova
+    -   International passport of a citizen of Tajikistan
+    -   International passport of a citizen of Turkmenistan
+    -   International passport of a citizen of Uzbekistan
+
+2. Improved Functionality
+
+-   Weakly Structured Documents: Enhanced support for recognizing weakly structured acts and invoices.
+-   Page Search: Improved document page search functionality.
+-   Table Recognition & Output: Significant improvements to table recognition and output. Table cells now include attributes for width, height, `rowspan`, and `colspan`.
+-   Localization & Field Recognition:  Enhanced localization and field recognition across all supported documents.
+-   New Field Recognition: Added recognition for:
+    -   Acts: Currency, VAT rate, signature/stamp zones.
+    -   Invoices: Party details, currency.
+    -   Reconciliation Acts: Table Recognition.
+    -   EGRIP: Separate output for surname, first name, and patronymic.
+    -   Taxpayer Registration: Address, document code & number, passport details, and separate name components.
+-   Raw Recognition Results: Added the functionality to retrieve "raw" recognition results.
+-   Field Validity Flag: Introduced a validity flag for fields (currently for dates), indicating an invalid date (e.g., June 21st, February 29th of a non-leap year).
+
+
+Smart Document Engine 3.0.0
+
+SDE 3.0.0 is a new powerful API for documents’ flow processing.
+
+SDE 3.0.0 presents: 
+– new system for flow analysis that supports per-document division out-of-box
+– new scene analysis system that supports recognition of several documents from one image (especially useful when recognizing identity documents that are often captured together)
+– new inner integration with Smart ID Engine that allows users of Smart Document Engine to recognize all identity documents with ID Engine accuracy and to combine their recognition with business documents recognition in one flow
+– new page location system for business documents that supports folded and curved sheets
+– new generation of fast text detection and recognition technologies. SDE 3.0.0 provides OCR results for all the processed pages (excluding typified identity documents). If the document was not typified, i.e. the image contains a document of unsupported type, OCR results with text coordinates are available.
+– new flexible document description model that allows us to unite earlier analysis steps and to provide efficient autoselection modes 
+– new document typification system for flexible documents that operates with documents similarities and differences 
+– new system for flexible document analysis and fields extraction
+– new table search and analysis system that operates with low-level and high-level image features and special table descriptors
+– new generation of recognition neural networks including our unique ‘’da Vinci’’ ANN architecture
+
+SDE 3.0.0 API differs from SDE 2.X.X (except 2.6.0 where the new API was provided with limited functionality). The major API differences are:
+– replacement of the combination of DocSession methods RegisterImage and Process with one method ProcessImage
+– replacement of GraphicalStructure with PhysicalDocument as a main tool to get information about document’s physical objects
+– depreciation of DocVideoSession and a number of other classes
+
+Be aware of the methods and classes that are softly deprecated, i.e. the methods work in the current version, but are to be deprecated soon. All these methods are marked with a special comment.
+
+Smart Text Engine note.
+
+Last December we presented a new API entitled Smart Text Engines that is a fast and memory-efficient tool for full-text OCR. STE is developed in sync with SDE, thus including our unique text detection and recognition models. If you are interested in full-text OCR only, please check Smart Text Engine. 

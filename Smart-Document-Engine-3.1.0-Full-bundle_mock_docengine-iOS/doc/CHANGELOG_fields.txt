@@ -1,0 +1,125 @@
+Field Naming Changes (Important - Update Your Code!)
+
+Several fields have been renamed to improve consistency and clarity. Please review the full list (see end of this document) when updating your integrations! This includes changes like:
+
+-   `inn` -> `inn_number`
+-   `director` -> `director_signatory_name`
+-   `accountant` -> `chief_accountant_signatory_name`
+-   `beneficiary_bank` -> `beneficiary_bank_name` (and similar changes for several payment-related fields).
+-   And many more - see the complete list below.
+
+---
+
+Full List of Field Renaming Changes:
+
+-   rus.balance_sheet.type1:  
+    -   `inn_code` -> `inn_number`
+    -   `director_name` -> `director_signatory_name`
+    -   `stamp_0` -> `stamping_zone`
+    -   `chief_accountant` -> `chief_accountant_signatory_name`
+
+-   rus.prof_income.reg.certificate.type1:
+    -   `inn_code` -> `inn_number`
+
+-   rus.invoice.type1:
+    -   `beneficiary_bank` -> `beneficiary_bank_name`
+    -   `beneficiary_bank_account` -> `beneficiary_corr_account`
+    -   `beneficiary_bik` -> `beneficiary_bank_bik`
+    -   `director` -> `director_signatory_name`
+    -   `accountant` -> `chief_accountant_signatory_name`
+    -   `accountant_signature` -> `chief_accountant_signature`
+    -   `stamp` -> `stamping_zone`
+
+-   rus.collection_order.type1:
+    -   `beneficiary_bank` -> `beneficiary_bank_name`
+    -   `beneficiary_bank_account` -> `beneficiary_corr_account`
+    -   `beneficiary_bik` -> `beneficiary_bank_bik`
+    -   `payer_bank_account` -> `payer_corr_account`
+    -   `payer_bik` -> `payer_bank_bik`
+
+-   rus.payment_order.type1:
+    -   `beneficiary_bank` -> `beneficiary_bank_name`
+    -   `beneficiary_bank_account` -> `beneficiary_corr_account`
+    -   `beneficiary_bik` -> `beneficiary_bank_bik`
+    -   `payer_bank_account` -> `payer_corr_account`
+    -   `payer_bik` -> `payer_bank_bik`
+
+-   rus.payment_request.type1
+    -   `beneficiary_bank` -> `beneficiary_bank_name`
+    -   `beneficiary_bank_account` -> `beneficiary_corr_account`
+    -   `beneficiary_bik` -> `beneficiary_bank_bik`
+    -   `payer_bank_account` -> `payer_corr_account`
+    -   `payer_bik` -> `payer_bank_bik`
+
+-   rus.payment_warrant.type1:
+    -   `beneficiary_bank` -> `beneficiary_bank_name`
+    -   `beneficiary_bank_account` -> `beneficiary_corr_account`
+    -   `beneficiary_bik` -> `beneficiary_bank_bik`
+    -   `payer_bank_account` -> `payer_corr_account`
+    -   `payer_bik` -> `payer_bank_bik`
+
+-   rus.upd.type1:
+    -   `director` -> `director_signatory_name`
+    -   `accountant` -> `chief_accountant_signatory_name`
+    -   `accountant_signature` -> `chief_accountant_signature`
+    -   `individual_entrepreneur` -> `individual_entrepreneur_signatory_name`
+
+-   rus.ukd.type1:
+    -   `director` -> `director_signatory_name`
+    -   `accountant` -> `chief_accountant_signatory_name`
+    -   `accountant_signature` -> `chief_accountant_signature`
+    -   `shipping_document` -> `shipment_document`
+    -   `price_change_suggested_name` -> `price_change_suggested_signatory_name`
+    -   `price_change_suggested_position` -> `price_change_suggested_signatory_position`
+    -   `price_change_notified_name` -> `price_change_notified_signatory_name`
+    -   `price_change_notified_position` -> `price_change_notified_signatory_position`
+
+-   rus.torg12.type1:
+    -   `sequential_records_numbers` -> `sequential_records_number`
+    -   `accountant_signature` -> `chief_accountant_signature`
+    -   `accountant` -> `chief_accountant_signatory_name`
+
+-   rus.invoice.tax.corr.type1:
+    -   `director` -> `director_signatory_name`
+    -   `accountant` -> `chief_accountant_signatory_name`
+    -   `accountant_signature` -> `chief_accountant_signature`
+    -   `individual_entrepreneur` -> `individual_entrepreneur_signatory_name`
+
+-   rus.invoice.tax.type1:
+    -   `director` -> `director_signatory_name`
+    -   `accountant` -> `chief_accountant_signatory_name`
+    -   `accountant_signature` -> `chief_accountant_signature`
+    -   `individual_entrepreneur` -> `individual_entrepreneur_signatory_name`
+
+-   rus.consignment_note.type1:
+    -   `accountant_signature` -> `chief_accountant_signature`
+    -   `chief_accountant_signature` -> `chief_accountant_signatory_name`
+
+-   rus.2ndfl.type1:
+    -   `series_and_number` -> `series_number`
+
+-   rus.reference.ks3.type1:
+    -   `including_vat` -> `vat`
+    -   `total_with_vat` -> `total_to_pay`
+    -   `customer_position` -> `customer_signatory_position`
+    -   `customer_name` -> `customer_signatory_name`
+    -   `contractor_position` -> `contractor_signatory_position`
+    -   `contractor_name` -> `contractor_signatory_name`
+
+-   rus.tin.entity.type1:
+    -   `inspection_representative_stamp` -> `inspection_representative_stamping_zone`
+
+-   rus.act.type1:
+    -   `responsible_stamp` -> `responsible_stamping_zone`
+    -   `provider_stamp` -> `provider_stamping_zone`
+    -   `customer_stamp` -> `customer_stamping_zone`
+
+-   rus.act.rights.transfer.type1:
+    -   `customer_stamp` -> `customer_stamping_zone`
+    -   `provider_stamping_zone` -> `provider_stamping_zone`
+
+-   rus.act.reconciliation.type1:
+    -   `party1_position` -> `party1_signatory_position`
+    -   `party1_name` -> `party1_signatory_name`
+    -   `party2_position` -> `party2_signatory_position`
+    -   `party2_name` -> `party2_signatory_name`

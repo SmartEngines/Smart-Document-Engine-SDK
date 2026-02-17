@@ -10,6 +10,7 @@ This is a collection of DEMO builds of Smart Document Engine SDK developed by Sm
     - [Code documentation](#code-documentation)
     - [Exceptions](#exceptions)
     - [Factory methods and memory ownership](#factory-methods-and-memory-ownership)
+  * [Multipage document recognition](#multipage-document-recognition)
   * [Configuration bundles](#configuration-bundles)
   * [Specifying document types for DocSession](#specifying-document-types-for-docsession)
     - [Supported document types](#supported-document-types)
@@ -294,6 +295,14 @@ Several Smart Document Engine SDK classes have factory methods which return poin
 We recommend using `std::unique_ptr<T>` for simple memory management and avoiding memory leaks.
 
 In Java API for the objects which are no longer needed it is recommended to use `.delete()` method to force the deallocation of the native heap memory.
+
+## Multipage document recognition
+
+Smart Document Engine supports multipage document recognition out-of-box. Run recognition of all the pages of the document in **one** session, sequentially calling `ProcessImage` on them. 
+
+Each image should contain one page of the document and pages should be sorted in reading order (page 1, page 2, etc.) Smart Document Engine will create **one** instance of `Document` for a multipage document to aggregate the recognized fields from all the pages.
+
+Also note that if a page of arbitrary-filled document (or a document not supported by running session) will come, it will be classified as a page of the current multipage document and all the text it contains will be recognized.
 
 ## Configuration bundles
 
