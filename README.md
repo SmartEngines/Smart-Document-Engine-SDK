@@ -19,6 +19,7 @@ This is a collection of DEMO builds of Smart Document Engine SDK developed by Sm
   * [Session options](#session-options)
   * [Java API Specifics](#java-api-specifics)
     - [Object deallocation](#object-deallocation)
+  * [PDF Recognition](#pdf-recognition)
   * [FAQ](#faq)
 
 
@@ -518,6 +519,36 @@ engine.delete(); // forces and immediately guarantees wrapped C++ object dealloc
 This is important because from garbage collector's point of view these objects occupy several bytes of Java memory while their actual heap-allocated size may be up to several dozens of megabytes. GC doesn't know that and decides to keep them in memory – several bytes won't hurt, right?
 
 You don't want such objects to remain in your memory when they are no longer needed so call `obj.delete()` manually.
+
+## PDF Recognition
+
+For server recognition, PDF files are supported as an input format. PDF support is implemented via preliminary conversion of PDF documents into raster images (e.g. PNG), which are then passed to the recognition pipeline.
+
+PDF-to-raster conversion can be performed using the open-source **PDFium** library via the `pdfium_cli` command-line utility.
+
+>The PDF conversion utility is given upon demand in order to reduce the size of the SDK distribution.
+
+Upon customer request, a ready-to-use PDF-to-raster conversion utility can be provided for a specific target architecture.
+
+| Option         | Description                                      | Default  |Required|
+|----------------|--------------------------------------------------|----------|--------|
+| -i, --input    | Path to the input PDF file                       | —        | Yes    |
+| -o, --output   | The directory for PNG images                     | `result` |        |
+| -d, --dpi      | Resolution (DPI)                                 | `300`    |        |
+| -r, --pages    | Pages, e.g. "1-3,5,7" or "all"                   | `all`    |        |
+| -p, --prefix   | Prefix name for the output files                 | `page_`  |        |
+| -g, --grayscale| Render pages in grayscale (smaller PNG file size)| —        |        |
+| -h, --help     | Help                                             | —        |        |
+
+Examples:
+
+```shell
+./pdfium_cli -i file.pdf
+```
+
+```shell
+./pdfium_cli -i file.pdf -o out -d 150 -r 1-5
+```
 
 # FAQ
 
